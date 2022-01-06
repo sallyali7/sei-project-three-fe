@@ -1,5 +1,5 @@
 import React from 'react'
-import axios from 'axios'
+// import axios from 'axios'
 import { BrowserRouter, Switch, Route } from  'react-router-dom'
 import LandingPage from './common/LandingPage'
 import Register from './auth/Register'
@@ -9,17 +9,18 @@ import Footer from './common/FooterFiles/Footer'
 import Stories from './common/FooterFiles/Stories'
 import About from './common/FooterFiles/About'
 import Keto from './common/FooterFiles/Keto'
-import RecipesPage from './common/Recipes'
-import ShowRecipes from './common/ShowRecipe'
+import RecipesPage from './common/recipes/Recipes'
+import ShowRecipes from './common/recipes/ShowRecipe'
+
 
 function App() {
-  React.useEffect(() => {
-    const getData = async () => {
-      const res = await axios.get('/api/recipes')
-      console.log(res.data)
-    }
-    getData()
-  })
+  // React.useEffect(() => {
+  //   const getData = async () => {
+  //     const res = await axios.get('/api/recipes')
+  //     console.log(res.data)
+  //   }
+  //   getData()
+  // })
 
   return (
     <BrowserRouter>
@@ -34,12 +35,12 @@ function App() {
         <Route exact path="/login">
           <Login />
         </Route>
-        <Route exact path="/recipes">
-          <RecipesPage />
-        </Route>
-        <Route exact path='/recipes/:recipeId'>
+        <Route exact path="/recipes/:recipeId">
           <ShowRecipes />
         </Route>
+        <Route exact path="/recipes">
+          <RecipesPage />
+        </Route>        
       </Switch>
       <Footer />
       <Switch>
