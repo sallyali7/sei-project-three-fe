@@ -3,16 +3,18 @@ import { Link } from 'react-router-dom'
 
 function Footer(){
   return (
-    <footer>
-      <Link to="/about">
+    <footer className="navbar fixed-bottom navbar-dark bg-dark">
+      <div className="container-fluid">
+        <Link to="/about" className="nav-item">
         About 
-      </Link>
-      <Link to="/whatisketo">
+        </Link>
+        <Link to="/whatisketo" className="nav-item">
         What is Keto?
-      </Link>
-      <Link to="/stories">
+        </Link>
+        <Link to="/stories" className="nav-item">
         Success Stories
-      </Link> 
+        </Link> 
+      </div>
     </footer>
   )
 }
