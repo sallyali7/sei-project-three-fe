@@ -8,6 +8,8 @@ function Navbar() {
 
   const handleLogout = () => {
     removeToken()
+    // force update here
+    // this.forceUpdate()
     history.push('/')
     // createNotification('Come back again soon!')
   }
@@ -29,15 +31,20 @@ function Navbar() {
             </>
           )}
           {isAuth && (
-            <button
-              className="nav-item"
-              onClick={handleLogout}
-            >Log Out
-            </button>
+            <>
+              <Link to="/profile" className="nav-item">
+                Profile
+              </Link>
+              <button
+                className="nav-item"
+                onClick={handleLogout}
+              >Log Out
+              </button>
+            </>
           )}
         </div>
       </div>
-    </nav>
+    </nav >
   )
 }
 

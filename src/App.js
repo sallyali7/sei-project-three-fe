@@ -1,6 +1,6 @@
 import React from 'react'
 // import axios from 'axios'
-import { BrowserRouter, Switch, Route } from  'react-router-dom'
+import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import LandingPage from './common/LandingPage'
 import Register from './auth/Register'
 import Navbar from './common/Navbar'
@@ -11,6 +11,10 @@ import About from './common/FooterFiles/About'
 import Keto from './common/FooterFiles/Keto'
 import RecipesPage from './common/recipes/Recipes'
 import ShowRecipes from './common/recipes/ShowRecipe'
+import Profile from './common/Profile'
+
+// test
+// import Profile from './common/Profile'
 
 
 function App() {
@@ -40,13 +44,16 @@ function App() {
         </Route>
         <Route exact path="/recipes">
           <RecipesPage />
-        </Route>        
+        </Route>
+        <Route exact path="/profile">
+          <Profile />
+        </Route>
       </Switch>
       <Footer />
       <Switch>
-        <Route path="/about" component={About}/>
-        <Route path="/stories" component={Stories}/>
-        <Route path="/whatisketo" component={Keto}/>
+        <Route path="/about" component={About} />
+        <Route path="/stories" component={Stories} />
+        <Route path="/whatisketo" component={Keto} />
       </Switch>
     </BrowserRouter>
   )
