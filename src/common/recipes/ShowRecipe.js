@@ -2,18 +2,24 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
 import { getSingleRecipe } from '../../lib/api'
-
+import Error from '../Error'
+import Loading from '../Loading'
 
 function ShowRecipes(){
   const { recipeId } = useParams()
   const [recipe, setRecipe] = React.useState(null)
+  const [isError, setIsError] = React.useState(null)
+  const isLoading = !recipe && !isError
   
   React.useEffect(() => {
     const getData = async () => {
-      const res = await getSingleRecipe(recipeId)
-      // axios.get(`/api/recipes/${recipeId}`)
-      setRecipe(res.data)
-      console.log(res.data)
+      try {
+        const res = await getSingleRecipe(recipeId)
+        setRecipe(res.data)
+      } catch (err) {
+        setIsError(true)
+      }
+    
     }
     getData()
   }, [recipeId])
@@ -21,6 +27,8 @@ function ShowRecipes(){
   return (
     <section>
       <div className="container">
+        {isError && <Error />}
+        {isLoading && <Loading />}
         {recipe ? (
           <div>
             <h2 className="title">

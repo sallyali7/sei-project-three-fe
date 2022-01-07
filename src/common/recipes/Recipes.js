@@ -1,16 +1,24 @@
 import React from 'react'
 import { getAllRecipes } from '../../lib/api'
 import RecipeCard from './RecipeCard'
+import Error from '../Error'
+import Loading from '../Loading'
 
 function RecipesPage(){
   const [recipes, setRecipes] = React.useState(null)
   const [selectedCourse, setSelectedCourse] = React.useState('All Meals')
   const [searchedValue, setSearchedValue] = React.useState('')
+  const [isError, setIsError] = React.useState(false)
+  const isLoading = !recipes && !isError
 
   React.useEffect(() => {
     const getData = async () => {
-      const res = await getAllRecipes()     
-      setRecipes(res.data)
+      try {
+        const res = await getAllRecipes()     
+        setRecipes(res.data)
+      } catch (err) {
+        setIsError(true)
+      }
     }
     getData()
   }, [])
@@ -23,15 +31,13 @@ function RecipesPage(){
     setSearchedValue(e.target.value)
   }
   console.log(searchedValue)
-  // const filteredSearch = (recipes) => {
-
-  // } 
+  
 
   const filteredCourses = (recipes) => {
     return recipes.filter(recipe => {
       return (
-        recipe.title.toLowerCase().includes(searchedValue.toLowerCase()) ||
-        recipe.course === selectedCourse || selectedCourse === 'All Meals'
+        recipe.title.toLowerCase().includes(searchedValue.toLowerCase()) &&
+        (recipe.course === selectedCourse || selectedCourse === 'All Meals')
       )
     })
   }
@@ -48,7 +54,10 @@ function RecipesPage(){
           <option value="Snacks">Snacks</option>
         </select>
       </div>
-      {recipes &&
+      <div className ="multiline">
+        {isError && <Error />}
+        {isLoading && <Loading /> }
+        {recipes &&
         filteredCourses(recipes).map(recipe => (
           <RecipeCard
             key={recipe._id}
@@ -59,8 +68,9 @@ function RecipesPage(){
             
           />
         )
-      ) 
-      }
+        ) 
+        }
+      </div>
     </section>         
   )
 }
