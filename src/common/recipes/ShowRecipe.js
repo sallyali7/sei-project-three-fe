@@ -46,18 +46,26 @@ function ShowRecipes(){
               </figure>              
             </div>
             <div className="macros">
-              <h3>Calories {recipe.calories}kcal</h3>
-              <h3>Protein {recipe.protein}g</h3>
-              <h3>Carbs {recipe.carbs}g</h3>
-              <h3>Fats {recipe.fats}g</h3>
+              <p><strong>Calories:</strong> {recipe.calories}kcal</p>
+              <p><strong>Protein:</strong> {recipe.protein}g</p>
+              <p><strong>Carbs:</strong> {recipe.carbs}g</p>
+              <p><strong>Fats:</strong> {recipe.fats}g</p>
             </div>
             <div className="ingredients">
-              <h3>Ingredients</h3>              
-              {recipe.ingredients}                         
+              <h3>Ingredients</h3>   
+              <ul>           
+                {recipe.ingredients.map((ingredient, index) => {
+                  return  <li key={index}>{ingredient}</li>                                
+                })}   
+              </ul>                      
             </div>
             <div>
               <h3>Preparation</h3>
-              {recipe.preparation}
+              <ul>
+                {recipe.preparation.map((prepare, index) => {
+                  return <li key={index}>{prepare}</li>
+                })}
+              </ul>
             </div>
           </div>
         ) : (
