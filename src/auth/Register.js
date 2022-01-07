@@ -1,6 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 // add more imports here (in particular, registerUser from lib/api)
+import { useHistory } from 'react-router'
+import { registerUser } from '../lib/api.js'
 import axios from 'axios'
 
 const initialState = {
@@ -11,6 +13,7 @@ const initialState = {
   password: '',
   passwordConfirmation: '',
   profileImage: '',
+  isAdmin: 'false',
 }
 
 
@@ -18,6 +21,7 @@ function Register() {
   // add constants
   const [formData, setFormData] = React.useState(initialState)
   const [isUploadingImage, setIsUploadingImage] = React.useState(false)
+  const history = useHistory()
 
   // handle change (needs error handling)
   const handleChange = e => {
@@ -26,7 +30,15 @@ function Register() {
 
   // handle submit - edit this
   const handleSubmit = async e => {
-    console.log(e, 'submitting')
+    e.preventDefault()
+
+    try {
+      await registerUser(formData)
+      history.push('/login')
+    } catch (err) {
+      // setFormErrors(err.response.data.errors)
+      console.log('registering error')
+    }
   }
 
 
@@ -51,6 +63,7 @@ function Register() {
             </label>
             <input
               placeholder='First name'
+              name='firstName'
               onChange={handleChange}
             />
           </div>
@@ -60,6 +73,7 @@ function Register() {
             </label>
             <input
               placeholder='Last name'
+              name='lastName'
               onChange={handleChange}
             />
           </div>
@@ -69,6 +83,7 @@ function Register() {
             </label>
             <input
               placeholder='Email'
+              name='email'
               onChange={handleChange}
             />
           </div>
@@ -78,6 +93,7 @@ function Register() {
             </label>
             <input
               placeholder='Username'
+              name='username'
               onChange={handleChange}
             />
           </div>
@@ -87,6 +103,7 @@ function Register() {
             </label>
             <input
               placeholder='Password'
+              name='password'
               onChange={handleChange}
             />
           </div>
@@ -96,6 +113,7 @@ function Register() {
             </label>
             <input
               placeholder='Confirm password'
+              name='passwordConfirmation'
               onChange={handleChange}
             />
           </div>
@@ -106,6 +124,7 @@ function Register() {
             <input
               type='file'
               accept='image/*'
+              name='profileImage'
               onChange={handleImageUpload}
             />
           </div>

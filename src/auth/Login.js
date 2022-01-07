@@ -27,6 +27,7 @@ function Login() {
     e.preventDefault()
 
     try {
+      console.log('attempting login') // test
       const res = await loginUser(formData)
       setToken(res.data.token)
       // createNotification(res.data.message)
@@ -58,6 +59,7 @@ function Login() {
             </label>
             <input
               placeholder='Password'
+              type='password'
               onChange={handleChange}
             />
           </div>
