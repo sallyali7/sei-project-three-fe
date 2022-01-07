@@ -42,11 +42,11 @@ function Register() {
   }
 
   return (
-    <section className='registerContainer'>
-      <div className='registerCard'>
-        <form className='registerForm' onSubmit={handleSubmit}>
-          <div className='registerField firstNameField'>
-            <label className='registerLabel' htmlFor='firstName'>
+    <section className='authContainer'>
+      <div className='authCard'>
+        <form className='authForm' onSubmit={handleSubmit}>
+          <div className='authField'>
+            <label className='authLabel' htmlFor='firstName'>
               First name
             </label>
             <input
@@ -54,8 +54,8 @@ function Register() {
               onChange={handleChange}
             />
           </div>
-          <div className='registerField lastNameField'>
-            <label className='registerLabel' htmlFor='lastName'>
+          <div className='authField'>
+            <label className='authLabel' htmlFor='lastName'>
               Last name
             </label>
             <input
@@ -63,8 +63,8 @@ function Register() {
               onChange={handleChange}
             />
           </div>
-          <div className='registerField emailField'>
-            <label className='registerLabel' htmlFor='email'>
+          <div className='authField'>
+            <label className='authLabel' htmlFor='email'>
               Email
             </label>
             <input
@@ -72,8 +72,8 @@ function Register() {
               onChange={handleChange}
             />
           </div>
-          <div className='registerField usernameField'>
-            <label className='registerLabel' htmlFor='username'>
+          <div className='authField'>
+            <label className='authLabel' htmlFor='username'>
               Username
             </label>
             <input
@@ -81,8 +81,8 @@ function Register() {
               onChange={handleChange}
             />
           </div>
-          <div className='registerField passwordField'>
-            <label className='registerLabel' htmlFor='password'>
+          <div className='authField'>
+            <label className='authLabel' htmlFor='password'>
               Password
             </label>
             <input
@@ -90,8 +90,8 @@ function Register() {
               onChange={handleChange}
             />
           </div>
-          <div className='registerField passwordConfirmationField'>
-            <label className='registerLabel' htmlFor='passwordConfirmation'>
+          <div className='authField'>
+            <label className='authLabel' htmlFor='passwordConfirmation'>
               Confirm Password
             </label>
             <input
@@ -99,8 +99,8 @@ function Register() {
               onChange={handleChange}
             />
           </div>
-          <div className='registerField imageField'>
-            <label className='registerLabel' htmlFor='image'>
+          <div className='authField'>
+            <label className='authLabel' htmlFor='image'>
               Profile Image
             </label>
             <input
@@ -110,8 +110,8 @@ function Register() {
             />
           </div>
           {isUploadingImage && <p>Image is uploading</p>}
-          <div className='registerField buttonField'>
-            <button className='registerButton' type='submit'>Register</button>
+          <div className='authField'>
+            <button className='authButton' type='submit'>Register</button>
           </div>
         </form>
         <p className=''>
