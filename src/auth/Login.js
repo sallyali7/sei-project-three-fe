@@ -50,6 +50,7 @@ function Login() {
             </label>
             <input
               placeholder='Email'
+              name='email'
               onChange={handleChange}
             />
           </div>
@@ -59,6 +60,7 @@ function Login() {
             </label>
             <input
               placeholder='Password'
+              name='password'
               type='password'
               onChange={handleChange}
             />
