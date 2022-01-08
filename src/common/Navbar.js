@@ -1,27 +1,15 @@
-import React, { useEffect, useState } from 'react'
 import { Link, useHistory } from 'react-router-dom'
-import { isAuthenticated, removeToken } from '../lib/auth.js'
+import { removeToken } from '../lib/auth.js' // update this to remove the id too
 
-function Navbar() {
-  // testing using state for authentication
-  const [isAuth, setisAuth] = useState(isAuthenticated()) // maybe set this default value to false?
-
-  // const isAuth = isAuthenticated()
+function Navbar({ isAuth, setIsAuth }) {
   const history = useHistory()
 
   const handleLogout = () => {
-    setisAuth(prevIsAuth => !prevIsAuth)
-
-    removeToken()
+    setIsAuth(false)
+    removeToken() // remove the id here too
     history.push('/')
     // createNotification('Come back again soon!')
   }
-
-  // redundant, only for console logging
-  useEffect(() => {
-    console.log('isAuth changed')
-    console.log('isAuth is: ', isAuth)
-  }, [isAuth])
 
   return (
     <nav className="navbar navbar-dark bg-dark">

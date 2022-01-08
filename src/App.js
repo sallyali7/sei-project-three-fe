@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 // import axios from 'axios'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import LandingPage from './common/LandingPage'
@@ -23,9 +23,14 @@ function App() {
   //   getData()
   // })
 
+  const [isAuth, setIsAuth] = useState(false)
+
   return (
     <BrowserRouter>
-      <Navbar />
+      <Navbar
+        isAuth={isAuth}
+        setIsAuth={setIsAuth}
+      />
       <Switch>
         <Route exact path="/">
           <LandingPage />
@@ -34,7 +39,7 @@ function App() {
           <Register />
         </Route>
         <Route exact path="/login">
-          <Login />
+          <Login setIsAuth={setIsAuth} />
         </Route>
         <Route exact path="/recipes/:recipeId">
           <ShowRecipes />

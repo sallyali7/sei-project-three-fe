@@ -33,6 +33,10 @@ export function getId() {
   return window.localStorage.getItem('userId')
 }
 
+export function removeId() {
+  window.localStorage.removeItem('userId')
+}
+
 // test, no longer needed
 export function getPayloadSub() {
   const token = getToken()

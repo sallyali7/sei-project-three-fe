@@ -2,9 +2,9 @@ import React from 'react'
 import { useHistory } from 'react-router'
 import { Link } from 'react-router-dom'
 import { loginUser } from '../lib/api.js'
-import { setToken, setId, isAuthenticated } from '../lib/auth.js'
+import { setToken, setId } from '../lib/auth.js'
 
-function Login() {
+function Login({ setIsAuth }) {
   // use history
   const history = useHistory()
 
@@ -27,14 +27,10 @@ function Login() {
     e.preventDefault()
 
     try {
-      console.log('attempting login - isAuthenticated: ', isAuthenticated()) // test
       const res = await loginUser(formData)
-      
-      // save id to local storage
       setId(res.data._id)
-      
       setToken(res.data.token)
-      console.log('login complete - isAuthenticated: ', isAuthenticated()) // test
+      setIsAuth(true)
       // createNotification(res.data.message)
       history.push('/recipes')
     } catch (err) {
