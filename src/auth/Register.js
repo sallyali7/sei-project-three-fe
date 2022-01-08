@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import { useHistory } from 'react-router'
 import { registerUser } from '../lib/api.js'
 import axios from 'axios'
+import Loading from '../common/Loading.js'
 
 const initialState = {
   firstName: '',
@@ -103,6 +104,7 @@ function Register() {
             </label>
             <input
               placeholder='Password'
+              type="password"
               name='password'
               onChange={handleChange}
             />
@@ -113,6 +115,7 @@ function Register() {
             </label>
             <input
               placeholder='Confirm password'
+              type="password"
               name='passwordConfirmation'
               onChange={handleChange}
             />
@@ -128,7 +131,8 @@ function Register() {
               onChange={handleImageUpload}
             />
           </div>
-          {isUploadingImage && <p>Image is uploading</p>}
+          {/* insert spinner */}
+          {isUploadingImage && <Loading />}
           <div className='authField'>
             <button className='authButton' type='submit'>Register</button>
           </div>
