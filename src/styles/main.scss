@@ -63,4 +63,26 @@
 //   justify-content: flex-start;
 // }
 
-//* * * * * * * * * * * * * *
+//* * * * * * INDEX * * * * * * * *
+
+#recipesContainer {
+  display: flex;
+  // justify-content: flex-start;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.recipeCard {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 350px;
+  width: 340px;
+  margin: 0 0 15px 10px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.recipeImage {
+  width: 100%;
+  height: 75%;
+}

@@ -54,7 +54,7 @@ function RecipesPage(){
           <option value="Snacks">Snacks</option>
         </select>
       </div>
-      <div className ="multiline">
+      <div className ="multiline" id="recipesContainer">
         {isError && <Error />}
         {isLoading && <Loading /> }
         {recipes &&
