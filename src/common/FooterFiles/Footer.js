@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 function Footer(){
   return (
-    <footer className="navbar fixed-bottom navbar-dark bg-dark">
+    <footer className="navbar navbar-dark bg-dark">
       <div className="container-fluid">
         <Link to="/about" className="nav-item">
         About 

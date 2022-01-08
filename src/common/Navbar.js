@@ -17,7 +17,7 @@ function Navbar({ isAuth, setIsAuth }) {
       <div className="container-fluid">
         <div className="d-flex flex-row bd-highlight">
           <Link to="/" className="navbar-brand">
-            <img src="../assets/Keto.png" alt="" width="60" height="40" className="navbar-logo" />
+            <img src="../assets/Keto.png" alt="" width="60" height="60" className="navbar-logo" />
           </Link>
           <Link to="/recipes" className="nav-item">Recipes</Link>
         </div>
