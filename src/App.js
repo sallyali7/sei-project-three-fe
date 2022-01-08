@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 // import axios from 'axios'
-import { BrowserRouter, Switch, Route } from 'react-router-dom'
+import { BrowserRouter, Switch, Route, Link } from 'react-router-dom'
 import LandingPage from './common/LandingPage'
 import Register from './auth/Register'
 import Navbar from './common/Navbar'
@@ -50,13 +50,20 @@ function App() {
         <Route exact path="/profile">
           <Profile />
         </Route>
+        <Route path="/about" >
+          <About />
+        </Route>
+        <Route path="/stories" >
+          <Stories />
+        </Route>
+        <Route path="/whatisketo" >
+          <Keto />
+        </Route>
       </Switch>
       <Footer />
-      <Switch>
-        <Route path="/about" component={About} />
-        <Route path="/stories" component={Stories} />
-        <Route path="/whatisketo" component={Keto} />
-      </Switch>
+      <Link to="/about" />
+      <Link to="/stories" />
+      <Link to="/whatisketo" />
     </BrowserRouter>
   )
 }
