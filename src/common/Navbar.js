@@ -1,12 +1,13 @@
 import { Link, useHistory } from 'react-router-dom'
-import { removeToken } from '../lib/auth.js' // update this to remove the id too
+import { removeId, removeToken } from '../lib/auth.js' // update this to remove the id too
 
 function Navbar({ isAuth, setIsAuth }) {
   const history = useHistory()
 
   const handleLogout = () => {
     setIsAuth(false)
-    removeToken() // remove the id here too
+    removeToken()
+    removeId()
     history.push('/')
     // createNotification('Come back again soon!')
   }
