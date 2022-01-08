@@ -2,7 +2,7 @@ import React from 'react'
 import { useHistory } from 'react-router'
 import { Link } from 'react-router-dom'
 import { loginUser } from '../lib/api.js'
-import { setToken, setId } from '../lib/auth.js'
+import { setToken, setId, isAuthenticated } from '../lib/auth.js'
 
 function Login() {
   // use history
@@ -27,13 +27,14 @@ function Login() {
     e.preventDefault()
 
     try {
-      console.log('attempting login') // test
+      console.log('attempting login - isAuthenticated: ', isAuthenticated()) // test
       const res = await loginUser(formData)
-
-      // print all the user data here and try to save the id to local storage
+      
+      // save id to local storage
       setId(res.data._id)
-
+      
       setToken(res.data.token)
+      console.log('login complete - isAuthenticated: ', isAuthenticated()) // test
       // createNotification(res.data.message)
       history.push('/recipes')
     } catch (err) {

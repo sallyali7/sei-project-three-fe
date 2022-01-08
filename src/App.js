@@ -13,9 +13,6 @@ import RecipesPage from './common/recipes/Recipes'
 import ShowRecipes from './common/recipes/ShowRecipe'
 import Profile from './common/Profile'
 
-// test
-// import Profile from './common/Profile'
-
 
 function App() {
   // React.useEffect(() => {
