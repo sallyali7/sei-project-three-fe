@@ -30,7 +30,7 @@ function RecipesPage(){
     e.preventDefault()
     setSearchedValue(e.target.value)
   }
-  console.log(searchedValue)
+  console.log(searchedValue) // test
   
 
   const filteredCourses = (recipes) => {
