@@ -26,46 +26,65 @@ function ShowRecipes(){
   
   return (
     <section>
-      <div className="container">
+      <div className="recipe-show-container">
         {isError && <Error />}
         {isLoading && <Loading />}
         {recipe ? (
-          <div>
-            <h2 className="title">
+          <div className="recipe-card-container">
+            <h2 className="recipe-card-title">
               {recipe.title}
             </h2>
-            <h5 className="subtitle">
-              {recipe.course}             
-            </h5>
-            <h5 className="subtitle">
-              {recipe.prepTime} Minutes
-            </h5>
-            <div className="card-image">
-              <figure className="card-image">
+            <div className="recipe-course-container">
+              <p className="recipe-course">
+                {recipe.course}             
+              </p>
+            </div>
+            <div className="recipe-minutes-container">
+              <p><span>⏲</span> <strong> Cook Time: </strong> {recipe.prepTime} Minutes </p>                 
+            </div>
+            <div className="recipe-card-image-container">
+              <figure className="recipe-card-image">
                 <img src={recipe.image} alt={recipe.name} />
-              </figure>              
+              </figure>  
+              <button className="faveBtn">
+                fave
+              </button>            
             </div>
-            <div className="macros">
-              <p><strong>Calories:</strong> {recipe.calories}kcal</p>
-              <p><strong>Protein:</strong> {recipe.protein}g</p>
-              <p><strong>Carbs:</strong> {recipe.carbs}g</p>
-              <p><strong>Fats:</strong> {recipe.fats}g</p>
+
+            <div className="recipe-macros-container">
+              <div className="recipe-macros-title">
+                <h3>Nutrition</h3>
+              </div>     
+              <div className="recipe-macros">         
+                <p> <strong>Calories:</strong> {recipe.calories} kcal <strong>Protein:</strong> {recipe.protein}g <strong>Carbs:</strong> {recipe.carbs}g <strong>Fats:</strong> {recipe.fats}g
+                </p>
+              </div>
             </div>
-            <div className="ingredients">
-              <h3>Ingredients</h3>   
-              <ul>           
-                {recipe.ingredients.map((ingredient, index) => {
-                  return  <li key={index}>{ingredient}</li>                                
-                })}   
-              </ul>                      
+            <div className="recipe-ingredients-container">
+              <div className="recipe-ingredients-title">
+                <h3>Ingredients</h3>   
+              </div>
+              <div className="recipe-ingredients">
+                
+                <ul className="recipes-list">
+                  
+                  {recipe.ingredients.map((ingredient, index) => {
+                    return  <li key={index}>{ingredient}</li>                                
+                  })}   
+                </ul>   
+              </div>                   
             </div>
-            <div>
-              <h3>Preparation</h3>
-              <ul>
-                {recipe.preparation.map((prepare, index) => {
-                  return <li key={index}>{prepare}</li>
-                })}
-              </ul>
+            <div className="recipe-preparation-container">
+              <div className="recipe-preparation-title">
+                <h3>Preparation</h3>
+              </div>
+              <div className="recipe-preparation">
+                <ul className="recipes-list">
+                  {recipe.preparation.map((prepare, index) => {
+                    return <li key={index}>{prepare}</li>
+                  })}
+                </ul>
+              </div>
             </div>
           </div>
         ) : (

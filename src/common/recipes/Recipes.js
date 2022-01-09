@@ -43,16 +43,22 @@ function RecipesPage() {
   }
 
   return (
-    <section className="section">
-      <div>
-        <input className="input-field" placeholder="Search..." onChange={handleSearch} />
-        <select onChange={handleSelect}>
-          <option> All Meals</option>
-          <option value="Breakfast">Breakfast</option>
-          <option value="Lunch">Lunch</option>
-          <option value="Dinner">Dinner</option>
-          <option value="Snacks">Snacks</option>
-        </select>
+    <section className="container">
+      <div className="searchdropmenu">
+        <div className="input-group mb-3">
+          <div className="input-group-text p-0">
+            <input className="form-control" type="search" placeholder="Recipe Search..." onChange={handleSearch}/>
+          </div>
+          <div className="dropdown">
+            <select onChange={handleSelect} className="form-select form-select-md shadow-none bg-light border-2" type="button">
+              <option> All Meals</option>
+              <option value="Breakfast" className="dropitem">Breakfast</option>
+              <option value="Lunch" className="dropitem">Lunch</option>
+              <option value="Dinner" className="dropitem">Dinner</option>
+              <option value="Snacks" className="dropitem">Snacks</option>
+            </select>
+          </div>
+        </div>
       </div>
       <div className="multiline" id="recipesContainer">
         {isError && <Error />}
