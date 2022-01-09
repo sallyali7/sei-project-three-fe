@@ -4,7 +4,7 @@ import RecipeCard from './RecipeCard'
 import Error from '../Error'
 import Loading from '../Loading'
 
-function RecipesPage(){
+function RecipesPage() {
   const [recipes, setRecipes] = React.useState(null)
   const [selectedCourse, setSelectedCourse] = React.useState('All Meals')
   const [searchedValue, setSearchedValue] = React.useState('')
@@ -14,7 +14,7 @@ function RecipesPage(){
   React.useEffect(() => {
     const getData = async () => {
       try {
-        const res = await getAllRecipes()     
+        const res = await getAllRecipes()
         setRecipes(res.data)
       } catch (err) {
         setIsError(true)
@@ -31,7 +31,7 @@ function RecipesPage(){
     setSearchedValue(e.target.value)
   }
   console.log(searchedValue) // test
-  
+
 
   const filteredCourses = (recipes) => {
     return recipes.filter(recipe => {
@@ -45,7 +45,7 @@ function RecipesPage(){
   return (
     <section className="section">
       <div>
-        <input className="input-field" placeholder="Search..." onChange={handleSearch}/>
+        <input className="input-field" placeholder="Search..." onChange={handleSearch} />
         <select onChange={handleSelect}>
           <option> All Meals</option>
           <option value="Breakfast">Breakfast</option>
@@ -54,24 +54,22 @@ function RecipesPage(){
           <option value="Snacks">Snacks</option>
         </select>
       </div>
-      <div className ="multiline" id="recipesContainer">
+      <div className="multiline" id="recipesContainer">
         {isError && <Error />}
-        {isLoading && <Loading /> }
+        {isLoading && <Loading />}
         {recipes &&
-        filteredCourses(recipes).map(recipe => (
-          <RecipeCard
-            key={recipe._id}
-            title={recipe.title}            
-            image={recipe.image}
-            recipeId={recipe._id}
-            course={recipe.course}
-            
-          />
-        )
-        ) 
+          filteredCourses(recipes).map(recipe => (
+            <RecipeCard
+              key={recipe._id}
+              title={recipe.title}
+              image={recipe.image}
+              recipeId={recipe._id}
+              course={recipe.course}
+            />
+          ))
         }
       </div>
-    </section>         
+    </section>
   )
 }
 
