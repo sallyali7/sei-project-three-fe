@@ -79,7 +79,12 @@ function Profile() {
         <li>Email: {
           profileInfo && profileInfo.email
         }</li>
-        <li>Favourites:</li>
+        <li>Favourites: {
+          (profileInfo && (profileInfo.favourites.length > 0)) &&
+          profileInfo.favourites.map(favourite => 
+            <p key={favourite}>{favourite}</p>
+          )
+        }</li>
         <hr></hr>
         <li>Your user id is: {getId()}</li>
         <li>Type of profileInfo: {typeof (profileInfo)}</li>

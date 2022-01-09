@@ -15,6 +15,7 @@ const initialState = {
   passwordConfirmation: '',
   profileImage: '',
   isAdmin: 'false',
+  favourites: [], // should this be '[]'
 }
 
 
