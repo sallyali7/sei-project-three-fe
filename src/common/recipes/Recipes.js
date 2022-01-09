@@ -43,18 +43,6 @@ function RecipesPage() {
   }
 
   return (
-<<<<<<< Updated upstream
-    <section className="section">
-      <div>
-        <input className="input-field" placeholder="Search..." onChange={handleSearch} />
-        <select onChange={handleSelect}>
-          <option> All Meals</option>
-          <option value="Breakfast">Breakfast</option>
-          <option value="Lunch">Lunch</option>
-          <option value="Dinner">Dinner</option>
-          <option value="Snacks">Snacks</option>
-        </select>
-=======
     <section className="container">
       <div className="searchdropmenu">
         <div className="input-group mb-3">
@@ -71,7 +59,6 @@ function RecipesPage() {
             </select>
           </div>
         </div>
->>>>>>> Stashed changes
       </div>
       <div className="multiline" id="recipesContainer">
         {isError && <Error />}
