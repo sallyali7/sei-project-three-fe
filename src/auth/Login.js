@@ -1,6 +1,6 @@
 import React from 'react'
 import { useHistory } from 'react-router'
-import { Link } from 'react-router-dom'
+// import { Link } from 'react-router-dom'
 import { loginUser } from '../lib/api.js'
 import { setToken, setId } from '../lib/auth.js'
 
@@ -39,44 +39,91 @@ function Login({ setIsAuth }) {
   }
 
   return (
-    <section className="authContainer">
-      <div className="authCard" id="loginCard">
-        <form
-          className='authForm'
-          onSubmit={handleSubmit}
-        >
-          <div className='authField'>
-            <label className='authLabel' htmlFor='email'>
-              Email
-            </label>
-            <input
-              placeholder='Email'
-              name='email'
-              onChange={handleChange}
-            />
+    <div className="card mw-50 mh-50">
+      <div className="row g-0" id="login">
+        <div className="col-md-4"> 
+          <img src="../assets/healthydinner.jpeg" className="img-fluid rounded-start" alt="roastdinner"/>
+        </div>
+        <div className="col-md-4">
+          <div className="card-body">
+            <h5 className="card-title">Log in</h5>
+            <form className="card-text" onSubmit={handleSubmit}>
+              <label className="authLabel" htmlFor="email">
+                <i className="bi bi-envelope-fill"></i>
+                
+              </label>
+              <input 
+                placeholder='Email'
+                name='email'
+                onChange={handleChange}
+              />
+              <label className="authLabel" htmlFor='password'>
+                <i className="bi bi-unlock-fill"></i>
+              </label>
+              <input
+                placeholder='Password'
+                name='password'
+                type='password'
+                onChange={handleChange}
+              />
+              <button type="submit" className="authButton">
+            Log in
+              </button>
+            </form>
+            <p className="card-text"><small className="text-muted">
+    Don&apos;t have an account? </small>
+            <button className="regButton"><a to="/register">Register</a></button>
+            </p>
           </div>
-          <div className='authField'>
-            <label className='authLabel' htmlFor='password'>
-              Password
-            </label>
-            <input
-              placeholder='Password'
-              name='password'
-              type='password'
-              onChange={handleChange}
-            />
-          </div>
-          <div className="authField">
-            <button type="submit" className="authButton">
-              Log in
-            </button>
-          </div>
-        </form>
-        <p className="">
-          Don&apos;t have an account? <Link to="/register">Register</Link>
-        </p>
+        </div>
       </div>
-    </section>
+    </div>
+
+
+
+
+
+
+
+  // <section className="authContainer">
+  //   <div className="authCard" id="loginCard">
+  //     <form
+  //       className='authForm'
+  //       onSubmit={handleSubmit}
+  //     >
+  //       <div className='authField'>
+  //         <label className='authLabel' htmlFor='email'>
+  //           Email
+  //         </label>
+  //         <input
+  //           placeholder='Email'
+  //           name='email'
+  //           onChange={handleChange}
+  //         />
+  //       </div>
+
+  //       <div className='authField'>
+  //         <label className='authLabel' htmlFor='password'>
+  //           Password
+  //         </label>
+  //         <input
+  //           placeholder='Password'
+  //           name='password'
+  //           type='password'
+  //           onChange={handleChange}
+  //         />
+  //       </div>
+  //       <div className="authField">
+  //         <button type="submit" className="authButton">
+  //           Log in
+  //         </button>
+  //       </div>
+  //     </form>
+  //     <p className="">
+  //       Don&apos;t have an account? <Link to="/register">Register</Link>
+  //     </p>
+  //   </div>
+  // </section>
   )
 }
 
