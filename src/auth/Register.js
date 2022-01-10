@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+// import { Link } from 'react-router-dom'
 // add more imports here (in particular, registerUser from lib/api)
 import { useHistory } from 'react-router'
 import { registerUser } from '../lib/api.js'
@@ -55,52 +55,38 @@ function Register() {
   }
 
   return (
-    <section className='authContainer'>
-      <div className='authCard'>
-        <form className='authForm' onSubmit={handleSubmit}>
-          <div className='authField'>
-            <label className='authLabel' htmlFor='firstName'>
-              First name
+    <section className="d-flex p-2 bd-highlight">
+      <div className="card">
+        <div className="card-header">
+        </div>
+        <div className="card-body">
+          <h5 className="card-title">Create an account</h5>
+          <form className="card-text .flex-column" onSubmit={handleSubmit}>
+            <label className="authLabel" htmlFor='firstName'>
+              <i className="bi bi-person-circle"></i>
             </label>
-            <input
+            <input className="regInput"
               placeholder='First name'
               name='firstName'
               onChange={handleChange}
             />
-          </div>
-          <div className='authField'>
             <label className='authLabel' htmlFor='lastName'>
-              Last name
+              <i className="bi bi-person-fill"></i>
             </label>
-            <input
+            <input 
               placeholder='Last name'
               name='lastName'
-              onChange={handleChange}
             />
-          </div>
-          <div className='authField'>
-            <label className='authLabel' htmlFor='email'>
-              Email
-            </label>
-            <input
-              placeholder='Email'
-              name='email'
-              onChange={handleChange}
-            />
-          </div>
-          <div className='authField'>
             <label className='authLabel' htmlFor='username'>
-              Username
+              <i className="bi bi-person-circle"></i>
             </label>
             <input
               placeholder='Username'
               name='username'
               onChange={handleChange}
             />
-          </div>
-          <div className='authField'>
             <label className='authLabel' htmlFor='password'>
-              Password
+              <i className="bi bi-lock"></i>
             </label>
             <input
               placeholder='Password'
@@ -108,10 +94,8 @@ function Register() {
               name='password'
               onChange={handleChange}
             />
-          </div>
-          <div className='authField'>
             <label className='authLabel' htmlFor='passwordConfirmation'>
-              Confirm Password
+              <i className="bi bi-lock-fill"></i>
             </label>
             <input
               placeholder='Confirm password'
@@ -119,10 +103,8 @@ function Register() {
               name='passwordConfirmation'
               onChange={handleChange}
             />
-          </div>
-          <div className='authField'>
             <label className='authLabel' htmlFor='image'>
-              Profile Image
+              <i className="bi bi-image"></i>
             </label>
             <input
               type='file'
@@ -130,16 +112,11 @@ function Register() {
               name='profileImage'
               onChange={handleImageUpload}
             />
-          </div>
-          {/* insert spinner */}
-          {isUploadingImage && <Loading />}
-          <div className='authField'>
-            <button className='authButton' type='submit'>Register</button>
-          </div>
-        </form>
-        <p className=''>
-          Already have an account? <Link to="/login">Log In</Link>
-        </p>
+            {isUploadingImage && <Loading />}
+          </form>
+          <button className="register btn btn-primary" type='submit'>Register</button>
+          <a href="/login" className="login btn btn-primary">Login</a>
+        </div>
       </div>
     </section>
   )
