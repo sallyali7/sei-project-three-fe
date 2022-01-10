@@ -31,7 +31,8 @@ function ShowRecipes(){
     try {
       // const res = 
       await addFavourite(recipeId) // change this to an addFavourite function
-      // do something with res.data here
+      // do something with res.data here?
+      // maybe change some state that changes the nature of the favourite button
     } catch (err) {
       console.log('error')
       // setIsError(true)

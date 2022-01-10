@@ -1,11 +1,11 @@
 function Stories() {
   return (
-    <div className='footer-stories-container'>
-      <div className='footer-stories-success-stories-container'>
-        <div className='footer-stories-title-container'>
+    <div className="footer-stories-container">
+      <div className="footer-stories-success-stories-container">
+        <div className="footer-stories-title-container">
           <h1>Keto Diet Success Stories</h1>
         </div>
-        <div className='footer-stories-content'>
+        <div className="footer-stories-content">
           <p>If you are curious about the results of the keto diet, take a look at these 3 inspirational keto diet before and after transformations to quench your thirst for motivation..</p>
         </div>
       </div>
@@ -15,9 +15,9 @@ function Stories() {
             <img src='../assets/story-1.jpeg' className="card-img-top" alt='John Smith'/> 
           </div>     
           <div className="col-md-8">                 
-            <div className='card-body'>
+            <div className="card-body">
               <h6 className="card-title">John Smith</h6>
-              <p className='card-text'>I am trying my damndest to cut down on carbs. To be honest, I really havent been strict since hitting my first ketoversary in May. I was like “I lost 150lbs” and went straight into maintenance. <br />
+              <p className="card-text">I am trying my damndest to cut down on carbs. To be honest, I really havent been strict since hitting my first ketoversary in May. I was like “I lost 150lbs” and went straight into maintenance. <br />
           Part of me worries about loose skin and part of me uses that as an excuse to be lax. <br />
           I will tell myself I dont want to rush so my body can catch up and hopefully reduce loose skin and that is okay, but I think I want to pick back up again. <br />
           I will say, I cannot BELIEVE I eat the way I do without gaining weight. That is completely new to me. I dont think Ive ever eaten with such abandonment. Ever. And I havent gained weight! <br />
