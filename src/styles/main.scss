@@ -148,17 +148,19 @@ small.text-muted{
 
 .card-img-top.recipes {
   width: 300px;
-  height: 200px;
+  height: 300px;
 }
-.card-title.recipe{
-  width: 20px;
-  height: 20px;
-  font-size: x-small;
+h5.card-title.recipes{
+  font-size: small;
+  background-color: #abd79e;
+  text-decoration: none;
+
 }
 //* * * * * * INDEX * * * * * * * *
 .searchdropmenu {
   margin-top: 5px;
-  font-family: 'Times New Roman', serif;
+  font-family: Georgia,  serif;
+  width: auto;
 }
 .dropitem {
   font-family: 'Playfair Display', serif;
