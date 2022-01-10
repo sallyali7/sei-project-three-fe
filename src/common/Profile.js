@@ -35,6 +35,9 @@ function Profile() {
   // console log the res.data and see what it looks like
   // we can expect to recieve a list of objects
 
+  // call getId() (from lib/auth) to obtain the user id
+  // pass an id variable to the getFavourites request
+
   return (
     <>
       <ul>
@@ -43,7 +46,7 @@ function Profile() {
           <img src={profileInfo.profileImage} height="200" width="200" alt="profile image"></img>
         }
         {(profileInfo && (!profileInfo.profileImage)) &&
-            <p>No profile image</p>
+          <p>No profile image</p>
         }
         </li>
         <li>First name: {
@@ -61,13 +64,13 @@ function Profile() {
         }</li>
         <li>Favourites: {
           // edit this so it comes from favourites state 
-          (profileInfo && (profileInfo.favourites.length > 0)) &&
-          profileInfo.favourites.map(favourite =>
+          // (profileInfo && (profileInfo.favourites.length > 0)) &&
+          // profileInfo.favourites.map(favourite =>
           // for each favourite, render a recipe card, passing it the key, title, image, recipeId and course 
 
-
-            <p key={favourite}>{favourite}</p>
-          )
+          <p>favourites go here</p>
+          // <p key={favourite}>{favourite}</p>
+          // )
         }</li>
         <hr></hr>
         <li>Your user id is: {getId()}</li>

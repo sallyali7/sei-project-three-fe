@@ -38,6 +38,7 @@ function Login({ setIsAuth }) {
     }
   }
 
+  // See the Cheesebored login page for how to conditionally render JSX based on the isError state variable
   return (
     <div className="card mw-50 mh-50">
       <div className="row g-0" id="login">

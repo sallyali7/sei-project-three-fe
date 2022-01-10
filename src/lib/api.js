@@ -19,7 +19,7 @@ export function getSingleRecipe(recipeId) {
   return axios.get(`${baseUrl}/recipes/${recipeId}`)
 }
 
-export function addFavourite(recipeId) {
+export function toggleFavourite(recipeId) {
   return axios.post(`${baseUrl}/recipes/${recipeId}`, recipeId, headers())
 }
 
@@ -32,6 +32,7 @@ export function getProfileInfo(userId) {
 }
 
 // WRITE AN API CALL HERE - get request - check router.js in the backend to make sure you have the right route and args
+// get request, getFavourites, the path is '/profile/:userId/favourites', pass the userId variable
 
 // * Auth Requests
 
