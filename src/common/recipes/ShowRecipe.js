@@ -1,7 +1,6 @@
-
 import React from 'react'
 import { useParams } from 'react-router-dom'
-import { getSingleRecipe } from '../../lib/api'
+import { getSingleRecipe, addFavourite } from '../../lib/api'
 import Error from '../Error'
 import Loading from '../Loading'
 
@@ -23,6 +22,20 @@ function ShowRecipes(){
     }
     getData()
   }, [recipeId])
+
+  const handleFavouriteClick = async e => {
+    e.preventDefault()
+    // this function should have a toggle - add favourite, remove favourite
+
+    try {
+      // const res = 
+      await addFavourite(recipeId) // change this to an addFavourite function
+      // do something with res.data here
+    } catch (err) {
+      console.log('error')
+      // setIsError(true)
+    }
+  }
   
   return (
     <section>
@@ -46,7 +59,7 @@ function ShowRecipes(){
               <figure className="recipe-card-image">
                 <img src={recipe.image} alt={recipe.name} />
               </figure>  
-              <button className="faveBtn">
+              <button className="faveBtn" onClick={handleFavouriteClick}>
                 fave
               </button>            
             </div>

@@ -19,6 +19,10 @@ export function getSingleRecipe(recipeId) {
   return axios.get(`${baseUrl}/recipes/${recipeId}`)
 }
 
+export function addFavourite(recipeId) {
+  return axios.post(`${baseUrl}/recipes/${recipeId}`, recipeId, headers())
+}
+
 // * Profile Request
 
 // make a function for getting profile information
