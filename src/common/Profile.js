@@ -1,35 +1,25 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 // import Error from '../Error'
 
-import { getProfileInfo } from '../lib/api'
-
+import { getProfileInfo, getFavourites } from '../lib/api'
 // import { getPayloadSub } from '../lib/auth'
 
 // uncomment this
 import { getId } from '../lib/auth'
 
+// import the RecipeCard component here
+import RecipeCard from '../common/recipes/RecipeCard.js'
+
 function Profile() {
   const [profileInfo, setProfileInfo] = React.useState(null)
-  // const [isError, setIsError] = React.useState(false)
+  //const [isError, setIsError] = React.useState(false)
+  const [favourites, setFavourites] = React.useState(null)
 
   React.useEffect(() => {
     const getData = async () => {
       console.log('attempting request')
       try {
         const id = getId()
-
-        // const json4 = {
-        //   userId: `${id}`,
-        // }
-
-        // const json3 = "{"userId":"${id}"}"
-
-        // const reqString = `{ "userId" : "${id}`
-        // const json2 = JSON.parse()
-
-        // const objId = { userId: id }
-        // const json = JSON.parse(JSON.stringify(objId))
-        // console.log('json4: ', json4)
         const res = await getProfileInfo(id)
         console.log('successful response')
         console.log('res.data: ', res.data) // test
@@ -42,20 +32,31 @@ function Profile() {
     getData()
   }, [])
 
-  // deduce which user is viewing the profile page by making a request and sending/using the web token in the body to know which profile info to return in the response
-  // maybe import getToken() from auth.js and call it
+  // add a useEffect hook here that makes a getFavourites request (imported from the api) and sets the favourites state with setFavourites
+  // model the hook above closely
+  // console log the res.data and see what it looks like
+  // we can expect to recieve a list of objects
 
-  // note: look at cheesebored - auth.js - isOwner function - this is the key to the problem
-  // we write a modified version of isOwner to obtain info about the user based on their payload (or more specifically, equality between the userId and payload.sub)
-  // find out where it's called from as this will help too - it is called at least by CheeseShow.js
+  // call getId() (from lib/auth) to obtain the user id
+  // pass an id variable to the getFavourites request
+  React,useEffect(() => {
+    const getData = async () => {
+      console.log('attempting get favourites')
+      try { 
+        const id = getId()
+        const res = await getFavourites(id)
+        console.log('successful response')
+        console.log('res.data: ', res.data)
+        setFavourites(res.data)
+      } catch (err) {
+        console.log('getting favourites info error')
+      }
+    }
+    getData()
+  }, [])
 
-  // also investigate comments as these are intrinsically tied to a unique user
-  // note the user of isOwner(user._id) in CheeseCommentCard - user is passed as a prop (it is imported by CheeseShow.js)
-
-  // one approach is to return and save the user id during the interactive login process, and then retrieve it from local storage and send it as part of the request when mounting the profile page - see the login process and find how to store the user id in local storage
-
+  
   return (
-    // display profileInfo
     <>
       <ul>
         <li>Profile image: {
@@ -63,7 +64,11 @@ function Profile() {
           <img src={profileInfo.profileImage} height="200" width="200" alt="profile image"></img>
         }
         {(profileInfo && (!profileInfo.profileImage)) &&
+<<<<<<< HEAD
             <p>No profile image</p>
+=======
+          <p>No profile image</p>
+>>>>>>> development
         }
         </li>
         <li>First name: {
@@ -79,20 +84,35 @@ function Profile() {
         <li>Email: {
           profileInfo && profileInfo.email
         }</li>
-        <li>Favourites: {
-          (profileInfo && (profileInfo.favourites.length > 0)) &&
-          profileInfo.favourites.map(favourite =>
-          // for each favourite, render a recipe card, passing it the key, title, image, recipeId and course 
-
-
-            <p key={favourite}>{favourite}</p>
-          )
-        }</li>
+        
         <hr></hr>
         <li>Your user id is: {getId()}</li>
         <li>Type of profileInfo: {typeof (profileInfo)}</li>
       </ul>
       <hr></hr>
+      <p>Favourites:</p>
+      <div> {
+        (favourites && (favourites.length > 0)) &&
+          favourites.map(favourite => (
+            <RecipeCard
+              key={favourite._id}
+              title={favourite.title}
+              image={favourite.image}
+              recipeId={favourite._id}
+              course={favourite.course}
+            />
+          ))
+          
+        // edit this so it comes from favourites state 
+        // (profileInfo && (profileInfo.favourites.length > 0)) &&
+        // profileInfo.favourites.map(favourite =>
+        // for each favourite, render a recipe card, passing it the key, title, image, recipeId and course 
+
+        //<p>favourites go here</p>
+        // <p key={favourite}>{favourite}</p>
+        // )
+      }
+      </div>
     </>
   )
 }

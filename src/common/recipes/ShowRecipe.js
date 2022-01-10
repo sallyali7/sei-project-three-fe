@@ -1,6 +1,6 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
-import { getSingleRecipe, addFavourite } from '../../lib/api'
+import { getSingleRecipe, toggleFavourite } from '../../lib/api'
 import Error from '../Error'
 import Loading from '../Loading'
 
@@ -10,6 +10,7 @@ function ShowRecipes(){
   const [recipe, setRecipe] = React.useState(null)
   const [isError, setIsError] = React.useState(null)
   const isLoading = !recipe && !isError
+  // write some state here - look at the example 3 lines above - the state variable should be called isFavourite, the setter function should be called setIsFavourite, the default value should be false (not sure about that though...)
   
   React.useEffect(() => {
     const getData = async () => {
@@ -26,13 +27,10 @@ function ShowRecipes(){
 
   const handleFavouriteClick = async e => {
     e.preventDefault()
-    // this function should have a toggle - add favourite, remove favourite
-
     try {
-      // const res = 
-      await addFavourite(recipeId) // change this to an addFavourite function
-      // do something with res.data here?
-      // maybe change some state that changes the nature of the favourite button
+      await toggleFavourite(recipeId)
+      // set the state variable here to the opposite of what it already was (see the example in Cheesebored - Navbar.js)
+      // note - may need to use the prevIsFavourite variable, but probably not
     } catch (err) {
       console.log('error')
       // setIsError(true)
@@ -58,6 +56,7 @@ function ShowRecipes(){
               <figure className="recipe-card-image">
                 <img src={recipe.image} alt={recipe.name} height={500} width= {700}/>
               </figure>  
+              {/* Use conditional rendering here to display either 'Add to favourites' or 'Remove from favourites' depending on the isFavourite state variable */}
               <button className="faveBtn" onClick={handleFavouriteClick}>
                 <i className="bi-bookmark-heart"> Add to Favourites</i>
               </button>     
