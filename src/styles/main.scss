@@ -12,6 +12,7 @@
   flex-direction: column;
   justify-content: space-between;
   min-height: 100vh;
+  font-family: Georgia, serif;
 }
 
 //* * * * * N A V    B A R  * * * * * 
@@ -262,5 +263,68 @@ footer {
   margin: 0px 0px 10px 10px;
 }
 
+// * * * * * * FOOTER PAGES * * * * * *
 
+// .footer-about-container {
+//   display: flex;
+//   justify-content: center;
+// }
+
+.footer-about-title-container {
+  display: flex;
+  justify-content: center;
+  background-color: black;
+  color: white;
+  margin: 10px 0px 0px 0px;
+  letter-spacing: 1px;
+}
+
+.footer-about-content {
+  display: flex;
+  justify-content: center;
+  margin: 0px 0px 0px 5px;
+
+}
+.footer-stories-title-container {
+  display: flex;
+  justify-content: center;
+  background-color: black;
+  color: white; 
+  margin: 0px 0px 0px 0px; 
+  padding: 5px 0px 0px 0px;
+  letter-spacing: 1px;
+  font-family: Georgia, serif;
+}
+
+.footer-stories-content {
+  margin: 0px 0px 0px 5px;
+  padding: 5px 0px 0px 0px;
+  display: flex;
+  justify-content: center;
+}
+
+
+
+.card-title {
+  background-color: black;
+  color: white;
+  display: flex;
+  justify-content: center;
+  padding: 10px 0px 10px 0px;
+  letter-spacing: 1px;
+}
+
+div.card-body {
+  padding: 0px 0px 0px 0px;
+}
+
+div.card.border-dark.mb-3 {
+  border: solid 2px rgb(169, 236, 169);
+}
+
+p.card-text {
+  padding: 0px 10px 0px 10px;
+  display: flex;
+  justify-content: center;
+}
 
