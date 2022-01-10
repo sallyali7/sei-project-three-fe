@@ -35,7 +35,7 @@ export function getProfileInfo(userId) {
 // get request, getFavourites, the path is '/profile/:userId/favourites', pass the userId variable
 export function getFavourites(userId) {
   console.log(userId)
-  return axios.get(`${baseUrl}/profile/${userId}/favourites`)
+  return axios.get(`${baseUrl}/profile/${userId}/favourites`) // added userId as an argument, add headers() here
 }
 
 // * Auth Requests

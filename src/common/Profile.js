@@ -32,6 +32,7 @@ function Profile() {
     getData()
   }, [])
 
+
   // add a useEffect hook here that makes a getFavourites request (imported from the api) and sets the favourites state with setFavourites
   // model the hook above closely
   // console log the res.data and see what it looks like
@@ -39,13 +40,15 @@ function Profile() {
 
   // call getId() (from lib/auth) to obtain the user id
   // pass an id variable to the getFavourites request
+
+  // put this into 1 single useEffect?
   React,useEffect(() => {
     const getData = async () => {
       console.log('attempting get favourites')
       try { 
         const id = getId()
         const res = await getFavourites(id)
-        console.log('successful response')
+        console.log('successful favourites response')
         console.log('res.data: ', res.data)
         setFavourites(res.data)
       } catch (err) {
@@ -88,7 +91,8 @@ function Profile() {
       <hr></hr>
       <p>Favourites:</p>
       <div> {
-        (favourites && (favourites.length > 0)) &&
+        favourites &&
+        // (favourites && (favourites.length > 0)) &&
           favourites.map(favourite => (
             <RecipeCard
               key={favourite._id}
