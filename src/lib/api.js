@@ -31,6 +31,8 @@ export function getProfileInfo(userId) {
   return axios.get(`${baseUrl}/profile/${userId}`)
 }
 
+// WRITE AN API CALL HERE - get request - check router.js in the backend to make sure you have the right route and args
+
 // * Auth Requests
 
 export function registerUser(formdata) {
