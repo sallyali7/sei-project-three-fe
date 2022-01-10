@@ -1,17 +1,19 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 // import Error from '../Error'
 
-import { getProfileInfo } from '../lib/api'
+import { getProfileInfo, getFavourites } from '../lib/api'
 // import { getPayloadSub } from '../lib/auth'
 
 // uncomment this
 import { getId } from '../lib/auth'
 
 // import the RecipeCard component here
+import RecipeCard from '../common/recipes/RecipeCard.js'
 
 function Profile() {
   const [profileInfo, setProfileInfo] = React.useState(null)
-  // const [isError, setIsError] = React.useState(false)
+  //const [isError, setIsError] = React.useState(false)
+  const [favourites, setFavourites] = React.useState(null)
 
   React.useEffect(() => {
     const getData = async () => {
@@ -37,7 +39,23 @@ function Profile() {
 
   // call getId() (from lib/auth) to obtain the user id
   // pass an id variable to the getFavourites request
+  React,useEffect(() => {
+    const getData = async () => {
+      console.log('attempting get favourites')
+      try { 
+        const id = getId()
+        const res = await getFavourites(id)
+        console.log('successful response')
+        console.log('res.data: ', res.data)
+        setFavourites(res.data)
+      } catch (err) {
+        console.log('getting favourites info error')
+      }
+    }
+    getData()
+  }, [])
 
+  
   return (
     <>
       <ul>
@@ -62,21 +80,35 @@ function Profile() {
         <li>Email: {
           profileInfo && profileInfo.email
         }</li>
-        <li>Favourites: {
-          // edit this so it comes from favourites state 
-          // (profileInfo && (profileInfo.favourites.length > 0)) &&
-          // profileInfo.favourites.map(favourite =>
-          // for each favourite, render a recipe card, passing it the key, title, image, recipeId and course 
-
-          <p>favourites go here</p>
-          // <p key={favourite}>{favourite}</p>
-          // )
-        }</li>
+        
         <hr></hr>
         <li>Your user id is: {getId()}</li>
         <li>Type of profileInfo: {typeof (profileInfo)}</li>
       </ul>
       <hr></hr>
+      <p>Favourites:</p>
+      <div> {
+        (favourites && (favourites.length > 0)) &&
+          favourites.map(favourite => (
+            <RecipeCard
+              key={favourite._id}
+              title={favourite.title}
+              image={favourite.image}
+              recipeId={favourite._id}
+              course={favourite.course}
+            />
+          ))
+          
+        // edit this so it comes from favourites state 
+        // (profileInfo && (profileInfo.favourites.length > 0)) &&
+        // profileInfo.favourites.map(favourite =>
+        // for each favourite, render a recipe card, passing it the key, title, image, recipeId and course 
+
+        //<p>favourites go here</p>
+        // <p key={favourite}>{favourite}</p>
+        // )
+      }
+      </div>
     </>
   )
 }

@@ -33,6 +33,10 @@ export function getProfileInfo(userId) {
 
 // WRITE AN API CALL HERE - get request - check router.js in the backend to make sure you have the right route and args
 // get request, getFavourites, the path is '/profile/:userId/favourites', pass the userId variable
+export function getFavourites(userId) {
+  console.log(userId)
+  return axios.get(`${baseUrl}/profile/${userId}/favourites`)
+}
 
 // * Auth Requests
 
