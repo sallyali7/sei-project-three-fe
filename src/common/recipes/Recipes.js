@@ -43,7 +43,7 @@ function RecipesPage() {
   }
 
   return (
-    <section className="container">
+    <section>
       <div className="searchdropmenu">
         <div className="input-group mb-3">
           <div className="input-group-text p-0">
@@ -60,10 +60,11 @@ function RecipesPage() {
           </div>
         </div>
       </div>
-      <div className="multiline" id="recipesContainer">
-        {isError && <Error />}
-        {isLoading && <Loading />}
-        {recipes &&
+      <div className="container index">
+        <div className="row row-cols-4 gx-2">
+          {isError && <Error />}
+          {isLoading && <Loading />}
+          {recipes &&
           filteredCourses(recipes).map(recipe => (
             <RecipeCard
               key={recipe._id}
@@ -73,7 +74,8 @@ function RecipesPage() {
               course={recipe.course}
             />
           ))
-        }
+          }
+        </div>
       </div>
     </section>
   )

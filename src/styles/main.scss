@@ -4,7 +4,7 @@
   text-decoration: none;
   color: white;
   padding: 5px;
-  font-family: 'Times New Roman', Times, serif;
+  font-family: Georgia, serif;
 }
 //* * * * * ROOT / BODY  * * * * * 
 #root {
@@ -12,6 +12,7 @@
   flex-direction: column;
   justify-content: space-between;
   min-height: 100vh;
+  font-family: Georgia, serif;
 }
 
 //* * * * * N A V    B A R  * * * * * 
@@ -57,79 +58,102 @@
 //   margin-top: 400px;
 // }
 
-//* * * * *   R E G I S T E R   A N D   L O G I N   * * * * * 
+//* * * * *   R E G I S T E R   * * * * * 
 
-.authContainer {
-  // height: 90vh;
-  margin-top: auto;
-  margin-bottom: auto;
+section.d-flex.p-2.bd-highlight{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: Georgia, serif;
+}
+div.card{
+  box-shadow: 5px 10px 5px 5px #888888;
+  margin-top: 10px;
+}
+div.card-header{
+  background-color: #7dc169;
+  height: 40px;
+  border-color: black;
+}
+h5.card-title{
+  font-family: Georgia, serif;
+  text-align: center;
+  font-size: xx-large;
+}
+.authLabel{
   display: flex;
   flex-direction: column;
+  padding: 3px;
+  font-family: Georgia, serif;
+}
+
+input.regInput{
   justify-content: center;
   align-items: center;
 }
+// *********** LOG IN ***************************
+#login {
+  justify-content: center;
 
-.authCard {
-  height: 75vh;
-  width: 50vw; // make this responsive
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-  border: 1px solid black;
-  border-radius: 5px;
+}
+a.login.btn.btn-primary{
+background-color: #7dc169;
+margin-left: 10px;
+margin-top: 10px;
+border-color: #7dc169;
+}
+button.register.btn.btn-primary{
+background-color: #7dc169;
+margin-top: 10px;
+border-color: #7dc169;
+}
+button.authButton{
+  background-color: #abd79e;
+  margin-left: 5px;
+  border-color: #abd79e;
+  border-radius: 6px;
+  color: white;
+}
+button.regButton{
+  background-color: #abd79e;
+  margin-left: 15px;
+  margin-top: 10px;
+  border-color: #abd79e;
+  border-radius: 6px;
+  color: white;
+}
+small.text-muted{
+  margin-left: 15px;
 }
 
-#loginCard {
-  height: 40vh;
-}
-
-.authForm {
-  height: 75%;
-  width: 90%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: flex-start;
-  // border: 1px solid black;
-  // border-radius: 5px;
-}
-
-.authField {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-// .buttonContainer {
-//   display: flex;
-//   justify-content: flex-start;
-// }
 
 //* * * * * * INDEX * * * * * * * *
 
-#recipesContainer {
-  display: flex;
-  // justify-content: flex-start;
-  justify-content: space-around;
-  flex-wrap: wrap;
-}
+// #recipesContainer {
+//   display: flex;
+//   // justify-content: flex-start;
+//   justify-content: space-around;
+//   flex-wrap: wrap;
+// }
 
-.recipeCard {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 350px;
-  width: 400px;
-  margin: 0 0 15px 10px;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-}
+// .recipeCard {
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: space-between;
+//   height: 350px;
+//   width: 400px;
+//   margin: 0 0 15px 10px;
+//   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+// }
 
-.recipeImage {
-  width: 100%;
-  height: fit-content;
+.img {
+  width: 20px;
+  height: 20px;
 }
+// .card-thumbnail {
+//   height: fit-content;
+//   overflow: hidden;
+// }
 
 //* * * * * * INDEX * * * * * * * *
 .searchdropmenu {
@@ -137,7 +161,7 @@
   font-family: 'Times New Roman', serif;
 }
 .dropitem {
-  font-family: 'Times New Roman', serif;
+  font-family: 'Playfair Display', serif;
 }
 footer {
   margin-top: auto;
@@ -152,9 +176,9 @@ footer {
 .recipe-card-title {
   display: flex;
   justify-content: center;
-  text-decoration: underline;
-  text-underline-offset: 0.2em;
+  padding: 10px;
   letter-spacing: 1px;
+  font-family: Georgia, serif;
 }
 
 .recipe-course-container {
@@ -162,21 +186,39 @@ footer {
   width: 15%;
   margin: 0px 10px 10px 5px;
   border-radius: 10px;
-  background-color: rgba(116, 113, 113, 0.3);
+  background-color: #abd79e;
   color: white; 
+  align-items: center;
 
 }
 .recipe-course-container:hover{
-  background-color: rgba(116,113,113,1);
+  background-color: #7dc169;
   color: white;
+}
+
+.bi-bookmark-heart{
+  height: 50px;
+  width: 50px;
+}
+
+.faveBtn{
+  height: 40px;
+  padding: 0 30px;
+  font-size: 11px;
+  background-color: #abd79e;
+  color: white;
+  border-radius: 6px;
+  border-color: #abd79e;
+  margin: 0px 0px 10px 10px;
 }
 
 .recipe-course {
   display: flex;
   text-align: center;
-  margin: 10px 0px 10px 30px;
+  margin: 5px 5px 5px 10px;
   opacity: 0.7;
   letter-spacing: 1px;
+
 
 }
 
@@ -186,7 +228,6 @@ footer {
 }
 
 .recipe-macros-container {
-  border: solid 2px grey;
   background-color: white;
   margin: 0px 0px 0px 0px;
   padding: 0px 0px 0px 0px;
@@ -195,24 +236,21 @@ footer {
 .recipe-macros-title {
   display: flex;
   justify-content: center;
-  background-color: darkgrey;
-  border-bottom: solid 2px rgb(77, 75, 75);
+  background-color: black;
   margin: 0px 0px 0px 0px;
   padding: 0px 0px 0px 0px;
   letter-spacing: 1px;
+  color: white;
 }
 
 .recipe-macros {
   display: flex;
-  justify-content: center;
+  flex-direction: row;
+  justify-content: space-between;
   padding: 0px 0px 0px 5px;
-  background-color: lightgray;
-  font-style: italic;
 }
 
 .recipe-ingredients-container {
-  border: solid 2px grey;
-  background-color: white;
   margin: 10px 0px 0px 0px;
   padding: 0px 0px 0px 0px;
 }
@@ -220,32 +258,33 @@ footer {
 .recipe-ingredients-title {
   display: flex;
   justify-content: center;
-  background-color: darkgrey;
-  border-bottom: solid 2px darkgrey;
+  background-color: black;
   letter-spacing: 1px;
+  color: white;
 }
 
 .recipe-ingredients {
-  background-color: lightgray;
+  background-color: white;
   margin: 0px 0px 0px 0px;
   padding: 0px 0px 0px 0px;
 }
 .recipe-preparation-container {
-  border: solid 2px grey;
-  background-color: white;
+  background-color: black;
+  color: white;
   margin: 10px 0px 0px 0px;
 
 }
 .recipe-preparation-title {
   display: flex;
   justify-content: center;
-  background-color: darkgrey;
-  border-bottom: solid 2px darkgrey;
+  background-color: black;
+  color: white;
   letter-spacing: 1px;
 }
 
 .recipe-preparation {
-  background-color: lightgray;
+  background-color: white;
+  color: black;
 
 }
 
@@ -253,6 +292,7 @@ footer {
   margin: 0px 0px 0px 0px;
 }
 
+<<<<<<< HEAD
 .faveBtn{
   height: 38px;
   padding: 0 30px;
@@ -262,5 +302,93 @@ footer {
   margin: 0px 0px 10px 10px;
 }
 
+// * * * * * * FOOTER PAGES * * * * * *
+=======
+>>>>>>> recipeindexbootstrap
+
+// .footer-about-container {
+//   display: flex;
+//   justify-content: center;
+// }
+
+.footer-about-title-container {
+  display: flex;
+  justify-content: center;
+  background-color: black;
+  color: white;
+  margin: 10px 0px 0px 0px;
+  letter-spacing: 1px;
+}
+
+.footer-about-content {
+  display: flex;
+  justify-content: center;
+  margin: 0px 0px 0px 5px;
+
+}
+.footer-stories-title-container {
+  display: flex;
+  justify-content: center;
+  background-color: black;
+  color: white; 
+  margin: 0px 0px 0px 0px; 
+  padding: 5px 0px 0px 0px;
+  letter-spacing: 1px;
+  font-family: Georgia, serif;
+}
+
+.footer-stories-content {
+  margin: 0px 0px 0px 5px;
+  padding: 5px 0px 0px 0px;
+  display: flex;
+  justify-content: center;
+}
 
 
+
+.card-title {
+  background-color: black;
+  color: white;
+  display: flex;
+  justify-content: center;
+  padding: 10px 0px 10px 0px;
+  letter-spacing: 1px;
+}
+
+div.card-body {
+  padding: 0px 0px 0px 0px;
+}
+
+div.card.border-dark.mb-3 {
+  border: solid 2px rgb(169, 236, 169);
+}
+
+p.card-text {
+  padding: 0px 10px 0px 10px;
+  display: flex;
+  justify-content: center;
+}
+
+.do-eat {
+  margin: 10px 0px 10px 0px;
+}
+
+.footer-keto-title-container {
+  display: flex;
+  justify-content: center;
+  letter-spacing: 1px;
+  background-color: black;
+  color: white;
+}
+
+.card-text {
+  margin: 0px 5px 0px 5px;
+}
+
+.do-not-eat {
+  margin: 10px 0px 10px 0px;
+}
+
+img.card-img-top {
+  border-radius: 0px;
+}

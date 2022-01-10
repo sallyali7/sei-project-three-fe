@@ -4,6 +4,7 @@ import { getSingleRecipe, addFavourite } from '../../lib/api'
 import Error from '../Error'
 import Loading from '../Loading'
 
+
 function ShowRecipes(){
   const { recipeId } = useParams()
   const [recipe, setRecipe] = React.useState(null)
@@ -53,25 +54,26 @@ function ShowRecipes(){
                 {recipe.course}             
               </p>
             </div>
-            <div className="recipe-minutes-container">
-              <p><span>⏲</span> <strong> Cook Time: </strong> {recipe.prepTime} Minutes </p>                 
-            </div>
             <div className="recipe-card-image-container">
               <figure className="recipe-card-image">
-                <img src={recipe.image} alt={recipe.name} />
+                <img src={recipe.image} alt={recipe.name} height={500} width= {700}/>
               </figure>  
               <button className="faveBtn" onClick={handleFavouriteClick}>
-                fave
-              </button>            
+                <i className="bi-bookmark-heart"> Add to Favourites</i>
+              </button>     
+              <div className="recipe-minutes-container">
+                <p><i className="bi bi-clock"></i><strong> Cook Time: </strong> {recipe.prepTime} Minutes </p>                 
+              </div>       
             </div>
-
             <div className="recipe-macros-container">
               <div className="recipe-macros-title">
                 <h3>Nutrition</h3>
               </div>     
               <div className="recipe-macros">         
-                <p> <strong>Calories:</strong> {recipe.calories} kcal <strong>Protein:</strong> {recipe.protein}g <strong>Carbs:</strong> {recipe.carbs}g <strong>Fats:</strong> {recipe.fats}g
-                </p>
+                <p> <strong>Calories:</strong> {recipe.calories} kcal </p> 
+                <p><strong>Protein:</strong> {recipe.protein}g </p>
+                <p><strong> Carbs:</strong> {recipe.carbs}g </p>
+                <p><strong>Fats:</strong> {recipe.fats}g</p>
               </div>
             </div>
             <div className="recipe-ingredients-container">
