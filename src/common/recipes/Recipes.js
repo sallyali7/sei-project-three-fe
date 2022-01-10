@@ -57,14 +57,11 @@ function RecipesPage() {
               <option value="Dinner" className="dropitem">Dinner</option>
               <option value="Snacks" className="dropitem">Snacks</option>
             </select>
-          </div>
-        </div>
-      </div>
-      <div className="container index">
-        <div className="row row-cols-4 gx-2">
-          {isError && <Error />}
-          {isLoading && <Loading />}
-          {recipes &&
+            <div className="container index">
+              <div className="row row-cols-4 gx-2">
+                {isError && <Error />}
+                {isLoading && <Loading />}
+                {recipes &&
           filteredCourses(recipes).map(recipe => (
             <RecipeCard
               key={recipe._id}
@@ -74,11 +71,16 @@ function RecipesPage() {
               course={recipe.course}
             />
           ))
-          }
+                }
+              </div>   
+            </div>
+          </div>
         </div>
       </div>
     </section>
   )
 }
+
+
 
 export default RecipesPage
