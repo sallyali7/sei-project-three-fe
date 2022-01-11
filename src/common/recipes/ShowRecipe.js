@@ -1,4 +1,3 @@
-
 import React from 'react'
 import { useParams } from 'react-router-dom'
 import { deleteRecipeComment, getSingleRecipe, toggleFavourite } from '../../lib/api' //getProfileInfo,
@@ -15,7 +14,6 @@ function ShowRecipes(){
   const [isError, setIsError] = React.useState(null)
   const [hasFavourited, setHasFavourited] = React.useState(false)
   const isLoading = !recipe && !isError
-  // write some state here - look at the example 3 lines above - the state variable should be called isFavourite, the setter function should be called setIsFavourite, the default value should be false (not sure about that though...)
   
   const fetchRecipe = React.useCallback(() => {
     const getData = async () => {
@@ -40,25 +38,13 @@ function ShowRecipes(){
       const faveClick = await toggleFavourite(recipeId)
       console.log(faveClick.data.favouritedBy)
       setHasFavourited(!hasFavourited)
-        
-  
-      // set the state variable here to the opposite of what it already was (see the example in Cheesebored - Navbar.js)
-      // note - may need to use the prevIsFavourite variable, but probably not
     } catch (err) {
       console.log('error')
       // setIsError(true)
     }
   }
   console.log(hasFavourited)
-  // const addToFave = async () =>  {  
-  //   try {
-  //     const addFavourite = await getProfileInfo(userId)
-  //     console.log(addFavourite)
-  //   } catch (err) {
-  //     console.log('error')
-  //   }   
-  // }
-  // console(addToFave)
+
   const handleDeleteComment = async (commentId) => {
     if (window.confirm('Do you want to delete this comment?')) {
       try {
@@ -90,7 +76,6 @@ function ShowRecipes(){
                 <figure className="recipe-card-image">
                   <img src={recipe.image} alt={recipe.name} height={500} width= {700}/>
                 </figure>  
-                {/* Use conditional rendering here to display either 'Add to favourites' or 'Remove from favourites' depending on the isFavourite state variable */}
                 {hasFavourited ? 
                   <button className="faveBtn" onClick={handleFavouriteClick}>                
                     <i className="bi-bookmark-heart"> Remove Favourites</i>
@@ -164,7 +149,6 @@ function ShowRecipes(){
         }
       </div>
     </section>
-          
   )
 }
 
