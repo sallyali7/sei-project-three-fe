@@ -78,6 +78,14 @@ function Register() {
               placeholder='Last name'
               name='lastName'
             />
+            <label className='authLabel' htmlFor='email'>
+              <i className="bi bi-person-fill"></i>
+            </label>
+            <input
+              placeholder='Email'
+              name='email'
+              onChange={handleChange}
+            />
             <label className='authLabel' htmlFor='username'>
               <i className="bi bi-person-circle"></i>
             </label>

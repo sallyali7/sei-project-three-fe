@@ -2,13 +2,13 @@
 import React from 'react'
 
 import { useParams } from 'react-router-dom'
-import { getProfileInfo, getSingleRecipe, toggleFavourite } from '../../lib/api'
+import { getSingleRecipe, toggleFavourite } from '../../lib/api' //getProfileInfo,
 import Error from '../Error'
 import Loading from '../Loading'
 
 
 function ShowRecipes(){
-  const { recipeId, userId } = useParams()
+  const { recipeId } = useParams() //,userId
   const [recipe, setRecipe] = React.useState(null)
   const [isError, setIsError] = React.useState(null)
   const [hasFavourited, setHasFavourited] = React.useState(false)
