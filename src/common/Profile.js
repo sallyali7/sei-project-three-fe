@@ -58,56 +58,55 @@ function Profile() {
   
   return (
     <>
-      <ul>
-        <li>Profile image: {
-          (profileInfo && profileInfo.profileImage) &&
-          <img src={profileInfo.profileImage} height="200" width="200" alt="profile image"></img>
-        }
-        {(profileInfo && (!profileInfo.profileImage)) &&
+      <div className="profile-container">      
+        <ul className="profile-list">
+          <li className="profile-picture"> {
+            (profileInfo && profileInfo.profileImage) &&
+        <img src={profileInfo.profileImage} height="200" width="200" alt="profile image"></img>
+          }
+          {(profileInfo && (!profileInfo.profileImage)) &&
           <p>No profile image</p>
-        }
-        </li>
-        <li>First name: {
-          profileInfo && profileInfo.firstName
-        }
-        </li>
-        <li>Last name: {
-          profileInfo && profileInfo.lastName
-        }</li>
-        <li>Username: {
-          profileInfo && profileInfo.username
-        }</li>
-        <li>Email: {
-          profileInfo && profileInfo.email
-        }</li>
+          }
+          </li>
+          <li className="profile-list-item"><strong>First name:</strong> {
+            profileInfo && profileInfo.firstName
+          }
+          </li>
+          <li className="profile-list-item"><strong>Last name:</strong> {
+            profileInfo && profileInfo.lastName
+          }</li>
+          <li className="profile-list-item"><strong>Username:</strong> {
+            profileInfo && profileInfo.username
+          }</li>
+          <li className="profile-list-item"><strong>Email:</strong> {
+            profileInfo && profileInfo.email
+          }</li>
+              
+        </ul>
         
-        <hr></hr>
-        <li>Your user id is: {getId()}</li>
-        <li>Type of profileInfo: {typeof (profileInfo)}</li>
-      </ul>
-      <hr></hr>
-      <p>Favourites:</p>
-      <div> {
-        (favourites && (favourites.length > 0)) &&
-          favourites.map(favourite => (
-            <RecipeCard
-              key={favourite._id}
-              title={favourite.title}
-              image={favourite.image}
-              recipeId={favourite._id}
-              course={favourite.course}
-            />
-          ))
-          
-        // edit this so it comes from favourites state 
-        // (profileInfo && (profileInfo.favourites.length > 0)) &&
-        // profileInfo.favourites.map(favourite =>
-        // for each favourite, render a recipe card, passing it the key, title, image, recipeId and course 
+        <h2 className="profile-fave">Favourites</h2>
+        <div> {
+          (favourites && (favourites.length > 0)) &&
+        favourites.map(favourite => (
+          <RecipeCard
+            key={favourite._id}
+            title={favourite.title}
+            image={favourite.image}
+            recipeId={favourite._id}
+            course={favourite.course}
+          />
+        ))
+        
+          // edit this so it comes from favourites state 
+          // (profileInfo && (profileInfo.favourites.length > 0)) &&
+          // profileInfo.favourites.map(favourite =>
+          // for each favourite, render a recipe card, passing it the key, title, image, recipeId and course 
 
-        //<p>favourites go here</p>
-        // <p key={favourite}>{favourite}</p>
-        // )
-      }
+          //<p>favourites go here</p>
+          // <p key={favourite}>{favourite}</p>
+          // )
+        }
+        </div>
       </div>
     </>
   )
