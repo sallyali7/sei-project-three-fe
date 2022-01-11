@@ -46,3 +46,9 @@ export function getPayloadSub() {
   // return JSON.parse(atob(parts[0]))
   // return typeof(token)
 }
+
+export function isOwner(userId) {
+  const payload = getPayload()
+  if (!payload) return false
+  return userId === payload.sub
+}

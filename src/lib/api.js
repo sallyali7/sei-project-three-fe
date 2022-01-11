@@ -49,3 +49,9 @@ export function loginUser(formdata) {
   // console log formdata here (test)
   return axios.post(`${baseUrl}/login`, formdata)
 }
+export function createRecipeComment(recipeId, formData) {
+  return axios.post(`${baseUrl}/recipes/${recipeId}/comments`, formData, headers())
+}
+export function deleteRecipeComment(recipeId, commentId) {
+  return axios.delete(`${baseUrl}/recipes/${recipeId}/comments/${commentId}`, headers())
+}

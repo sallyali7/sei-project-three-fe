@@ -11,9 +11,10 @@ function RecipeCommentForm({ fetchRecipe, recipeId }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-
+    console.log('comment value', commentValue)
     try {
-      await createRecipeComment(recipeId, { content: commentValue })
+      // await createRecipeComment(recipeId, { content: commentValue })
+      await createRecipeComment(recipeId, { text: commentValue })
       setCommentValue('')
       fetchRecipe()
     } catch (err) {
