@@ -34,7 +34,7 @@ function Navbar({ isAuth, setIsAuth }) {
                 Profile
               </Link>
               <button
-                className="nav-item"
+                className="nav-item-logout"
                 onClick={handleLogout}
               >Log Out
               </button>

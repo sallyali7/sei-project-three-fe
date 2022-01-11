@@ -6,7 +6,13 @@
   padding: 5px;
   font-family: Georgia, serif;
 }
-//* * * * * ROOT / BODY  * * * * * 
+.nav-item-logout{
+  background-color: transparent;
+  border: none;
+  color: white;
+}
+//* * * * * ROOT / BODY  * * *
+ * * 
 #root {
   display: flex;
   flex-direction: column;
@@ -105,6 +111,7 @@ border-color: #7dc169;
 button.register.btn.btn-primary{
 background-color: #7dc169;
 margin-top: 10px;
+margin-bottom: -70px;
 border-color: #7dc169;
 }
 button.authButton{
@@ -122,10 +129,12 @@ button.regButton{
   border-radius: 6px;
   color: white;
 }
-small.text-muted{
-  margin-left: 15px;
+.card-text-register{
+  margin: 15px;
 }
-
+#reg{
+  margin-bottom: -30px;
+}
 
 //* * * * * * INDEX * * * * * * * *
 
@@ -160,7 +169,6 @@ h5.card-title.recipes{
 .searchdropmenu {
   margin-top: 5px;
   font-family: Georgia,  serif;
-  width: auto;
 }
 .dropitem {
   font-family: 'Playfair Display', serif;
@@ -301,6 +309,28 @@ footer {
   background-color: transparent;
   border-radius: 6px;
   margin: 0px 0px 10px 10px;
+}
+// **** Comment Box******
+.comment-delete-button{
+  background-color: transparent;
+  border-style: none;
+}
+
+.comment-button{
+  background-color: #abd79e;
+  border: 1px solid #abd79e;
+  color: white;
+  margin-bottom: 5px;
+}
+.comment-user{
+  background-color: #abd79e;
+  border-bottom: 1px solid grey;
+}
+.comment-content{
+  border: 1px solid grey;
+  text-align: left;
+  font-family: Georgia, serif;
+  margin-top: 30px;
 }
 
 // * * * * * * FOOTER PAGES * * * * * *

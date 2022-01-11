@@ -71,7 +71,7 @@ function Login({ setIsAuth }) {
             Log in
               </button>
             </form>
-            <p className="card-text"><small className="text-muted">
+            <p className="card-text-register"><small className="text-muted">
     Don&apos;t have an account? </small>
             <button className="regButton"><a to="/register">Register</a></button>
             </p>

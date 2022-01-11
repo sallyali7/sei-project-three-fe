@@ -123,9 +123,9 @@ function Register() {
               onChange={handleImageUpload}
             />
             {isUploadingImage && <Loading />}  
-            <button className="register btn btn-primary" type='submit'>Register</button>
+            <button className="register btn btn-primary" type='submit' id="reg">Register</button>
           </form>
-          <a href="/login" className="login btn btn-primary">Login</a>
+          <a href="/login" className="login btn btn-primary" id="log">Login</a>
         </div>
       </div>
     </section>
