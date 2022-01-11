@@ -64,11 +64,7 @@ function Profile() {
           <img src={profileInfo.profileImage} height="200" width="200" alt="profile image"></img>
         }
         {(profileInfo && (!profileInfo.profileImage)) &&
-<<<<<<< HEAD
-          <p>No profile image</p>
-=======
             <p>No profile image</p>
->>>>>>> development
         }
         </li>
         <li>First name: {
