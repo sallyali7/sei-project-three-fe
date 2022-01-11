@@ -56,27 +56,7 @@ function Profile() {
           <img src={profileInfo.profileImage} height="200" width="200" alt="profile image"></img>
         }
         {(profileInfo && (!profileInfo.profileImage)) &&
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< HEAD
-<<<<<<< HEAD
             <p>No profile image</p>
-=======
-          <p>No profile image</p>
->>>>>>> development
-=======
-            <p>No profile image</p>
->>>>>>> development
-=======
-            <p>No profile image</p>
->>>>>>> Stashed changes
-=======
-            <p>No profile image</p>
->>>>>>> Stashed changes
-=======
-            <p>No profile image</p>
->>>>>>> Stashed changes
         }
         </li>
         <li>First name: {
