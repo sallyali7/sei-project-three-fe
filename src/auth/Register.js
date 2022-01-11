@@ -33,7 +33,7 @@ function Register() {
   // handle submit - edit this
   const handleSubmit = async e => {
     e.preventDefault()
-
+    console.log('form data submitted', formData)
     try {
       await registerUser(formData)
       history.push('/login')
@@ -77,6 +77,15 @@ function Register() {
             <input 
               placeholder='Last name'
               name='lastName'
+              onChange={handleChange}
+            />
+            <label className='authLabel' htmlFor='email'>
+              <i className="bi bi-person-fill"></i>
+            </label>
+            <input
+              placeholder='Email'
+              name='email'
+              onChange={handleChange}
             />
             <label className='authLabel' htmlFor='username'>
               <i className="bi bi-person-circle"></i>
@@ -113,9 +122,9 @@ function Register() {
               name='profileImage'
               onChange={handleImageUpload}
             />
-            {isUploadingImage && <Loading />}
+            {isUploadingImage && <Loading />}  
+            <button className="register btn btn-primary" type='submit'>Register</button>
           </form>
-          <button className="register btn btn-primary" type='submit'>Register</button>
           <a href="/login" className="login btn btn-primary">Login</a>
         </div>
       </div>

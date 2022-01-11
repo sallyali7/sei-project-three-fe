@@ -1,16 +1,16 @@
 
 import React from 'react'
 import { useParams } from 'react-router-dom'
-import { getSingleRecipe, toggleFavourite, deleteRecipeComment } from '../../lib/api'
-import { isAuthenticated } from '../../lib/auth'
+import { deleteRecipeComment, getSingleRecipe, toggleFavourite } from '../../lib/api' //getProfileInfo,
 import Error from '../Error'
 import Loading from '../Loading'
 import RecipeCommentCard from './RecipeCommentCard'
 import RecipeCommentForm from './RecipeCommentForm'
+import { isAuthenticated } from '../../lib/auth'
 
 
 function ShowRecipes(){
-  const { recipeId } = useParams()
+  const { recipeId } = useParams() //,userId
   const [recipe, setRecipe] = React.useState(null)
   const [isError, setIsError] = React.useState(null)
   const [hasFavourited, setHasFavourited] = React.useState(false)
