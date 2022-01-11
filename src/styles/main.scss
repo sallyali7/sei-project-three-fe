@@ -391,3 +391,43 @@ p.card-text {
 img.card-img-top {
   border-radius: 0px;
 }
+
+// * * * * * Profile page * * * * *
+.profile-header-container {
+  display: flex;
+  justify-content: center;
+  background-color: black;
+  color: white;
+}
+
+// .profile-information-container {
+//   display: inline-block;
+
+// }
+.profile-information-picture {
+  display: flex;
+}
+
+
+
+.profile-list {
+  list-style: none;
+  
+}
+
+.profile-list-item {
+  margin: 10px 0px 0px 20px;
+}
+
+.profile-fave {
+  display: flex;
+  justify-content: center;
+  text-decoration: underline;
+  text-transform: uppercase;
+  margin: 50px 0px 0px 0px;
+}
+
+.profile-picture {
+  float: left;
+  margin: 0px 10px 0px 0px;
+}
