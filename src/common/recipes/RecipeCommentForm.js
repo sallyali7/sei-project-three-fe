@@ -31,7 +31,7 @@ function RecipeCommentForm({ fetchRecipe, recipeId }) {
         {isError && <p className="help is-danger">Please write a comment and try again!</p>}
       </div>
       <div className="field">
-        <button type="submit" className="button is-warning">Comment</button>
+        <button type="submit" className="comment-button">Comment</button>
       </div>
     </form>
   )

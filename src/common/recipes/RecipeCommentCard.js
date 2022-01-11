@@ -4,14 +4,16 @@ function RecipesCommentCard({  text, addedBy, handleDelete }) {
   return (
     <div className="comment-box">
       <div className="comment-content">
-        <p>
+        <p className="comment-user">
           <strong>{addedBy.username}</strong>
           <br />
+        </p>
+        <p>
           {text}
         </p>
-        {isOwner(addedBy._id) &&
-              <button className="comment-button" onClick={handleDelete}>X</button>}
       </div>
+      {isOwner(addedBy._id) &&
+              <button className="comment-delete-button" onClick={handleDelete}><i className="bi bi-trash"></i></button>}
     </div>
   
   )
