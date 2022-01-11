@@ -57,6 +57,7 @@ function Profile() {
         }
         {(profileInfo && (!profileInfo.profileImage)) &&
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 <<<<<<< HEAD
 <<<<<<< HEAD
             <p>No profile image</p>
@@ -66,6 +67,9 @@ function Profile() {
 =======
             <p>No profile image</p>
 >>>>>>> development
+=======
+            <p>No profile image</p>
+>>>>>>> Stashed changes
 =======
             <p>No profile image</p>
 >>>>>>> Stashed changes
