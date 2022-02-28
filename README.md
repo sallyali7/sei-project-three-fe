@@ -1,95 +1,145 @@
-## Overview
-I worked in a group with [aromiafolabi](https://github.com/aromiafolabi), [sallyali7](https://github.com/sallyali7) and [astounded2006](https://github.com/astounded2006) to complete this project as part of the General Assembly Software Engineering Immersive course. The course was split into four modules, and this was our submission for module three. During module three, we learnt about Node, Express and Mongo. This was my first exposure to server-side software and databases. The finished project was deployed with Netlify (front end) and Heroku (back end), and can be found [here](https://ketokitchen-proj-three-sei.netlify.app/). This is the front end repository. The back end can be found [here](https://github.com/tigeryant/sei-project-three-be).
+# KetoKitchen #
 
-<p align="center">
-  <img src="https://i.imgur.com/uAXHDqI.png" width="700">
+## General Assembly SEI | Project Three | Exaclidraw / Mongoose / Mongo / Express.js / Node.js / React / Bootstrap / CSS | Four members | 1 Week ##
+
+Link: https://ketokitchen-proj-three-sei.netlify.app/
+
+### Overview ###
+
+KetoKitchen is a full stack MERN webapp where users can find Keto based recipes. Users can create authenticated profiles, browse recipes from four different courses, filter, search and bookmark their favourites. 
+
+All recipes include details of cooking time, instructions, macros and number of calories. 
+
+This was a group project of four myself included, my fellow teammates are [Aromi Afolabi](https://github.com/aromiafolabi), [John Davies](https://github.com/tigeryant) and [Deniss Bulai](https://github.com/astounded2006).
+
+## Project Brief & MVP ##
+
+• Create a full-stack MERN webapp
+
+• Hook up front & backend 
+
+• Include a functional front-end  
+
+• KISS and DRY Code
+
+• Deploy for public access.
+
+## Technologies Used ##
+
+• Express.js
+• Node.js
+• React.js
+• Mongo
+• Mongoose
+• JavaScript
+• Sass
+• Bootstrap
+
+
+## Planning ##
+
+In a group meeting, we collectively decided on the functionality of the app, what we wanted to achieve, the design/layout and lastly how we were to split tasks and coordinate the roles. I then created the main homepage wireframe on exaclidraw.
+
+  <p align="center">
+  <img src="https://i.imgur.com/dWyuxtP.png" width="700">
   </p>
 
-## Brief
-Our task was to build a full stack web application using the MERN stack (Mongo, Express, React and Node).
-
-## Timeframe
-We were given one week to complete this project.
-
-## Technologies used
-* Express.js
-* Node.js
-* React.js
-* Mongo
-* Mongoose
-* JavaScript
-* Sass
-* Bootstrap
-* Bcrypt
-* JSON Web Tokens
-* Axios
-* Cloudinary
-* Git
-* GitHub
-
-## Approach
-We decided to build a keto recipe website which we gave the name ‘KetoKitchen’.
-
-## Planning
-On the first day, we spent our time brainstorming ideas for our app. Ultimately we agreed to design and build KetoKitchen. We decided on a few key features for our minimum viable product (MVP), and then set out some ’stretch goals’ - features that we could work on upon completion of the MVP. We decided that the MVP should include the following pages and functionality: a landing page, an index page - for displaying the recipes, searching and filtering, a show page for each recipe - to display information specific to that recipe, login and registration (authentication), a profile page - to display user data and footer pages - such as an ‘About’ page. Our stretch goals were a favourites feature and a comments feature. One of my team members used Excalidraw to produce the home page wireframe and I drew one for the Index page.
-
-<p align="center">
-  <img src="https://i.imgur.com/wuLX6Cn.png" width="500">
-  <img src="https://i.imgur.com/TTwzGKS.png" width="500">
+  [John Davies](https://github.com/tigeryant) created the wireframe for the page that displays recipes. 
+  
+  <p align="center">
+  <img src="https://i.imgur.com/nJSXgoR.png" width="700">
   </p>
 
-We held daily stand ups throughout the week to discuss what each of us were working on and any upcoming tasks that needed to be completed.
 
-## Work split
-For the first few days, we all worked together on the most fundamental parts of the application so that we had a basic skeleton for the app. An example of this was each writing JSON data in the seeds file to populate the database. After a few days, once this was built, we branched off and took a more modular approach, with each of us working on a separate component or task. My main role at this point was to work on user authentication and, following this, the favourites feature. This involved both front and back end development.
+## Back-end process ##
 
-## Build
-### User Authentication
-The feature I initially worked to implement was user authentication. This involved development on both the front and back end. I wrote the code for the `Register.js` and `Login.js` files. Each of these allows the user to fill in a form which is then submitted via an API call to the back end. Here are some snippets showing the ‘submit’ functions:
+We decided we'd collectively work on the back-end. Given the timeframe we had, we knew it was best to have our server fully built and ready to be accepting requests from our frontend before we split tasks. This worked very well for us as we did not take a lot of time to build it as our skill sets were pooled together. This also helped us prevent running into a lot of issues and bugs when building our frontend.
 
-```javascript
-const handleSubmit = async e => {
-    e.preventDefault()
-    try {
-      const res = await loginUser(formData)
-      setId(res.data._id)
-      setToken(res.data.token)
-      setIsAuth(true)
-      history.push('/recipes')
-    } catch (err) {
-      setIsError(true)
-    }
-  }
+We began by building our schemas and inputting all the data types we wanted available for requests on the frontend. 
+
+We had three Schemas models in total. One for our recipes, one for recipes comments and one for the users. 
+
+### Recipes Model: ###
+
+```js
+const recipeSchema = new mongoose.Schema({
+  course: { type: String, required: true },
+  title: { type: String, required: true, unique: true },
+  image: { type: String, required: true },
+  prepTime: { type: Number, required: true },
+  calories: { type: Number, required: true },
+  protein: { type: Number, required: true },
+  carbs: { type: Number, required: true },
+  fats: { type: Number, required: true },
+  ingredients: { type: Array, required: true },
+  preparation: { type: Array, required: true },
+  comments: [commentSchema],
+
+  // we can remove these two fields and what it relates to in seeds.js
+  addedBy: { type: mongoose.Schema.ObjectId, ref: 'User', required: true },
+  favouritedBy: [{ type: mongoose.Schema.ObjectId, ref: 'User', required: true }], // important
+})
 ```
-```javascript
-const handleSubmit = async e => {
-    e.preventDefault()
-    try {
-      await registerUser(formData)
-      history.push('/login')
-    } catch (err) {
-      setFormErrors(err.response.data.errors)
-    }
-  }
+### Recipe comments model: ###
+
+```js
+const commentSchema = new mongoose.Schema({
+  text: { type: String, required: true, maxlength: 200 },
+  rating: { type: Number, required: false, min: 1, max: 5 },
+  addedBy: { type: mongoose.Schema.ObjectId, ref: 'User', required: true },
+}, {
+  timestamps: true,
+})
 ```
 
-In order to allow the users to have a display photo, I used a third party image hosting service called Cloudinary. The `handleImageUpload` function can be seen here:
+### Users Model ###
 
-```javascript
-const handleImageUpload = async (e) => {
-    const data = new FormData()
-    data.append('file', e.target.files[0])
-    data.append('upload_preset', process.env.REACT_APP_CLOUDINARY_UPLOAD_PRESET)
-    setIsUploadingImage(true)
-    const res = await axios.post(process.env.REACT_APP_CLOUDINARY_URL, data)
-    setFormData({ ...formData, profileImage: res.data.url })
-    setIsUploadingImage(false)
+```js
+const userSchema = new mongoose.Schema({
+  firstName: { type: String, unique: false, maxlength: 50, required: true },
+  lastName: { type: String, unique: false, maxlength: 50, required: true },
+  email: { type: String, unique: true, required: true },
+  username: { type: String, unique: true, maxlength: 50, required: true },
+  password: { type: String, required: true },
+  profileImage: { type: String, required: false },
+  isAdmin: { type: Boolean, default: false },
+})
+```
+We then began to input our data in accordance with our schema, we split the courses between us (breakfast, lunch, dinner, snacks) for time efficiency. Each course has 10 recipes. Later, we seeded. 
+
+ We then added routes, authentication and request functions. 
+
+Lastly, we added error handling and secure routes for functions that were accessed by authorised users only. 
+
+Secure Routes:
+```js
+export default async function secureRoute(req, _res, next) {
+  try {
+    if (!req.headers.authorization || !req.headers.authorization.startsWith('Bearer')) {
+      throw new Unauthorized()
+    }
+    const token = req.headers.authorization.replace('Bearer ', '')
+
+    const payload = jwt.verify(token, secret)
+
+    const user = await User.findById(payload.sub)
+
+    if (!user) {
+      throw new Unauthorized()
+    }
+
+    req.currentUser = user
+    req.currentUserId = user._id
+
+    next()
+  } catch (err) {
+    next(err)
+  }
 }
 ```
 
-On the back end I set up routing for login and registration, and wrote the following controllers to handle authentication requests. JSON web tokens were used for the authentication process.
-
-```javascript
+Authentication:
+```js
 async function registerUser(req, res, next) {
   try {
     const createdUser = await User.create(req.body)
@@ -100,91 +150,96 @@ async function registerUser(req, res, next) {
     next(err)
   }
 }
- 
+
 async function loginUser(req, res, next) {
   try {
     const userToLogin = await User.findOne({ email: req.body.email })
     if (!userToLogin || !userToLogin.validatePassword(req.body.password)) {
       throw new Unauthorized()
     }
+
     const token = jwt.sign({ sub: userToLogin._id }, secret, { expiresIn: '7 days' })
+
     return res.status(202).json({
       message: `Welcome Back ${userToLogin.username}`,
       token,
-      _id: userToLogin._id,
-      userInfo: userToLogin,
+      _id: userToLogin._id, // test, (actually this is necessary)
+      userInfo: userToLogin, // test
     })
   } catch (err) {
     next(err)
   }
 }
-```
 
-### Favourites feature - front end and back end
-After successfully implementing user authentication, I moved on to implementing the favourites feature. This also involved both front and back end development, but my primary focus was on the back end. The favourites feature allows users to ‘favourite’ a particular recipe from the show page - the recipe is then added to their ‘favourites’ list. This process uses Mongoose to query and update the database. When the user views their profile page, the favourites are displayed. Here is the controller I built to handle the request that toggles the recipe. The schema also had to be updated to implement this feature.
-
-```javascript
-async function toggleFavourite(req, res, next) {
-  const { recipeId } = req.params
-  const { currentUser, currentUserId } = req
-  try {
-    const recipeToFavourite = await Recipe.findById(recipeId).populate('favouritedBy')
-    if (!recipeToFavourite) {
-      throw new NotFound()
-    }
-    if (recipeToFavourite.favouritedBy.find(user => currentUserId.equals(user._id))) {
-      recipeToFavourite.favouritedBy.remove(currentUserId)
-    } else {
-      recipeToFavourite.favouritedBy.push(currentUser)
-    }
-    await recipeToFavourite.save()
-    return res.status(201).json(recipeToFavourite)
-  } catch (err) {
-    next(err)
-  }
+export default {
+  register: registerUser,
+  login: loginUser,
 }
 ```
 
-If the user has not yet favourited the recipe, their id is added to the `favouritedBy` list on the recipe document. If the user has already favourited the recipe, their id is removed. This conditional enables the ‘toggle’ function, meaning a single controller can be used for both adding and removing favourites.
- 
-Another important part of the favourites feature I built was the `getFavourites` controller. When the user visits their profile page, an API call is made which retrieves data about all the recipes they have favourited.
+## Front-End process ##
 
-```javascript
-async function getFavourites(req, res, next) {
-  try {
-    const { userId } = req.params
-    const user = await User.findById(userId).populate('favouriteRecipes')
-    const favouriteRecipes = user.favouriteRecipes
-    return res.status(200).json(favouriteRecipes)
-  } catch (err) {
-    next(err)
-  }
-}
-```
-On the front end, in the `Profile.js` component, I used the React useEffect hook to make an API call to retrieve the data.
+For the front-end, we divided the pages between us. I worked on styling most of the pages in addition to working on the favourites feature, search and login/register pages. 
 
-```javascript
-React,useEffect(() => {
-    const getData = async () => {
-      try { 
-        const id = getId()
-        const res = await getFavourites(id)
-        console.log('successful response')
-        console.log('res.data: ', res.data)
-        setFavourites(res.data)
-      } catch (err) {
-        console.log('getting favourites info error')
-      }
-    }
-    getData()
-  }, [])
-```
 
-## Known bugs
-One bug we are aware of is to do with the favourites feature. One of my group members realised that if the user favourites a recipe on the show page, then moves to another page, and then returns to the show page, the favourites button will still display its ‘unfavourited’ state. This is due to a problem with the default state of the ‘isFavourited’ variable.
+## Screenshots ##
 
-## Challenges
-One of the biggest challenges we had was version control. While we had all used Git before, this was the first time we had used it extensively to collaborate and manage five versions of the codebase simultaneously. At times we struggled with merge conflicts and divergent branches. I realised that my own knowledge of Git was not sufficient for the collaborative nature of the project. Due to this, I decided to learn more about Git in my own time. In particular, I tried to develop my understanding of how branches diverge and converge, how stashing works, the relationship between the working tree, the staging tree and the current branch, how changes can be undone to return to a previous state, rebasing vs merging and how conflicts can be resolved. This paid off, as later in the week I was able to help other group members with resolving conflicts and managing branches.
+**Home page:**
 
-## Key learnings
-Of all the projects at GA, this one taught me the most. In terms of soft skills, I learnt a lot about collaboration in a development team and I got to practise working to a deadline. In terms of tech skills, I learnt a great deal about Git, which I mentioned above, React, and perhaps most intimately, Express. This was the first time I really got to grips with how schemas, routing, middleware and databases work. I spent a lot of time building schemas and middleware, learning about API calls and reading documentation. This experience was truly invaluable and serves as a good reminder of the benefits of active over passive learning.
+<p align="center">
+  <img src="https://i.imgur.com/uAXHDqI.png" width="700">
+  </p>
+
+**Login page:**
+
+<p align="center">
+  <img src="https://i.imgur.com/CDAv135.png" width="700">
+  </p>
+
+**Recipes page:** 
+
+<p align="center">
+  <img src="https://i.imgur.com/M0s06Jz.jpg" width="700">
+  </p>
+
+
+
+## Challenges ##
+
+Our main challenge on this project was working with version control. It was our first time working with it and we collectively ran into issues often but by the end of the week we all strongly understood how to work with it. 
+
+## Wins ##
+
+• Building a MERN app in a short period of time was a great win.
+• Learning how to work with github version control.
+
+## Key Learnings ##
+
+• Team collaboration 
+
+• Building Schemas, middleware, routing
+
+• Git, Github and version control
+
+• working with express.js 
+
+## Known bugs ##
+
+• Favourites feature, if a user favourites a recipe on the show page, then moves to another page, and then returns to the show page, the favourites button will still display its ‘unfavourited’ state. This is due to a problem with the default state of the ‘isFavourited’ variable.
+
+
+## Future Features ## 
+• Better responsiveness 
+
+• Better UI
+
+• Add custom ingredients to a shopping list 
+
+
+
+
+
+
+
+
+
